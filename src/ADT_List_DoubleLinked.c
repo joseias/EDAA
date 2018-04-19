@@ -101,7 +101,7 @@ void add_at(List* list, int element, unsigned int pos){
 		list->size++;
 	}
 	else{
-		fprintf(stderr, "Invalid list index %d ", pos);
+		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 
@@ -139,7 +139,7 @@ void remove_at(List* list, unsigned int pos){
 		free(cn);
 	}
 	else{
-		fprintf(stderr, "Invalid list index %d ", pos);
+		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -203,7 +203,7 @@ Node* getNodeAt(List* list, unsigned int pos){
 		return tmp;
 	}
 	else{
-		fprintf(stderr, "Invalid list index %d ", pos);
+		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 }

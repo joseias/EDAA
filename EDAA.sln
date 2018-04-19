@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{CCA8
 		src\ADT_Queue_List.h = src\ADT_Queue_List.h
 		src\ADT_Queue_TwoStacks.c = src\ADT_Queue_TwoStacks.c
 		src\ADT_Queue_TwoStacks.h = src\ADT_Queue_TwoStacks.h
+		src\ADT_Set_Array.c = src\ADT_Set_Array.c
+		src\ADT_Set_Array.h = src\ADT_Set_Array.h
 		src\ADT_Stack_Array.c = src\ADT_Stack_Array.c
 		src\ADT_Stack_Array.h = src\ADT_Stack_Array.h
 		src\ADT_Stack_List.c = src\ADT_Stack_List.c
@@ -34,9 +36,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{CCA8
 		src\Recursion.h = src\Recursion.h
 		src\SearchSort.c = src\SearchSort.c
 		src\SearchSort.h = src\SearchSort.h
+		TextFile1.txt = TextFile1.txt
 		src\TMP.txt = src\TMP.txt
 		src\UVA10718.c = src\UVA10718.c
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01524757-DBBC-4413-B8FA-7D75F6404513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
