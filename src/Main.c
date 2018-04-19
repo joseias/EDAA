@@ -1,10 +1,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ProblemSolutions.h"
+#include "ADT_Set_Array.h"
 
 int main(void)
 {
+	testSet();
 //	testIsPalindromo();
 //	testInsert();
 //	testBuildHeap();
@@ -30,7 +31,7 @@ int main(void)
 //	testNQueens();
 //	testCuriousNumbers();
 //	testVariations();
-
+	system("pause");
 	return 0;
 }
 
