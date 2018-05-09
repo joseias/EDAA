@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	testSet();
+//	testSet();
 //	testIsPalindromo();
 //	testInsert();
 //	testBuildHeap();
@@ -17,7 +17,7 @@ int main(void)
 //	testArrayMin();
 //	testInsertionSort();
 //	testArraySum();
-//	testLinkedList();
+	testLinkedList();
 //	testStack();
 //	testBalancing();
 //	testPosEval();

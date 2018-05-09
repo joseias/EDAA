@@ -43,5 +43,5 @@ Node* getNodeAt(List* list, int unsigned pos);
 void testLinkedList();
 
 int lastIndexOf(List* list, int element);
-
+List* reverseRec(List* list);
 #endif /* ADT_LIST_DOUBLELINKED_H_ */

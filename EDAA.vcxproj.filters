@@ -18,12 +18,12 @@
     <ClCompile Include="src\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ADT_Set_Array.c">
+    <ClCompile Include="src\ADT_List_DoubleLinked.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ADT_Set_Array.h">
+    <ClInclude Include="src\ADT_List_DoubleLinked.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

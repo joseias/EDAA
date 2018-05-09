@@ -115,11 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ADT_Set_Array.c" />
+    <ClCompile Include="src\ADT_List_DoubleLinked.c" />
     <ClCompile Include="src\Main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ADT_Set_Array.h" />
+    <ClInclude Include="src\ADT_List_DoubleLinked.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

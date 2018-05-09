@@ -49,6 +49,12 @@ void testLinkedList(){
 		element=get(list, i);
 		printf("Elemento en posicion %d es : %d \n", i, element);
 	}
+
+	List* rev = reverseRec(list);
+	printf("\n");
+	for (i = 0; i<size_list(rev); i++) {
+		printf("Elemento en posicion %d es : %d \n", i, get(rev, i));
+	}
 }
 List* createList(){
 	List* list=(List*)malloc(sizeof(List));
@@ -156,17 +162,7 @@ int indexOf(List* list, int element){
 	}
 	return -1;
 }
-int lastIndexOf(List* list, int element){
 
-	int index;
-	for(index=size_list(list)-1; index >=0;index--){
-		if(get(list, index)==element){
-			return index;
-		}
-	}
-
-	return -1;
-}
 bool contains(List* list, int element){
 	return indexOf(list, element) != -1;
 }
@@ -205,5 +201,34 @@ Node* getNodeAt(List* list, unsigned int pos){
 	else{
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
+	}
+}
+
+
+int lastIndexOf(List* list, int element) {
+
+	int index;
+	for (index = size_list(list) - 1; index >= 0; index--) {
+		if (get(list, index) == element) {
+			return index;
+		}
+	}
+
+	return -1;
+}
+
+
+List* reverseRec(List* list) {
+	List* rev;
+	int e;
+	if (size_list(list) == 0) {
+		return createList();
+	}
+	else {
+		e = get(list,0);
+		remove_at(list,0);
+		rev = reverseRec(list);
+		add(rev,e);
+		return rev;
 	}
 }
