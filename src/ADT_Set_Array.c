@@ -1,7 +1,7 @@
 /********************************************************************************
 * 																				*
-* ADT Set , implementado utilizando un arreglo y elementos desde la				*
-* posicion 0		 															*
+* ADT Set , implementacion MUY ineficiente utilizando un arreglo y elementos 	*
+* desde la posicion 0. Solo para ilustrar el concepto de TDA		 			*
 * 																				*
 ********************************************************************************/
 #include "ADT_Set_Array.h"
