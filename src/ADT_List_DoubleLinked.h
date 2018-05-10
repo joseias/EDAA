@@ -42,6 +42,12 @@ Node* createNode(int element, Node* next, Node* prev);
 Node* getNodeAt(List* list, int unsigned pos);
 void testLinkedList();
 
+/* ADT List, soluciones a problemas guía */
 int lastIndexOf(List* list, int element);
+
+/*Recursive list reversal*/
 List* reverseRec(List* list);
+
+/*Removing duplicates just with TDA List operations*/
+void deleteDup(List* list);
 #endif /* ADT_LIST_DOUBLELINKED_H_ */

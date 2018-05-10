@@ -9,52 +9,55 @@
 void testLinkedList(){
 	int i, element, index;
 	List* list=createList();
-	add(list,1);
-	add(list,3);
-	add(list,5);
-	add(list,3);
-	add(list,7);
+	add(list, 1);
+	add(list, 3);
+	add(list, 5);
+	add(list, 3);
+	add(list, 7);
+	add(list, 1);
+
+
+	deleteDup(list);
 
 
 	for(i=0;i<size_list(list);i++){
-		element=get(list, i);
-		printf("Elemento en posicion %d es : %d \n", i, element);
+		printf("Elemento en posicion %d es : %d \n", i, get(list, i));
 	}
 
-	printf("\n");
-	printf("IndexOf %d -> %d \n", 3, indexOf(list, 3));
-	printf("LastIndexOf %d -> %d \n", 3, lastIndexOf(list, 3));
+	//printf("\n");
+	//printf("IndexOf %d -> %d \n", 3, indexOf(list, 3));
+	//printf("LastIndexOf %d -> %d \n", 3, lastIndexOf(list, 3));
 
-	element=7;
-	index=indexOf(list, element);
-	printf("Indice de %d es: %d \n", element, index);
+	//element=7;
+	//index=indexOf(list, element);
+	//printf("Indice de %d es: %d \n", element, index);
 
-	remove_at(list, index);
+	//remove_at(list, index);
 
 
-	printf("\n");
-	for(i=0;i<size_list(list);i++){
-		element=get(list, i);
-		printf("Elemento en posicion %d es : %d \n", i, element);
-	}
+	//printf("\n");
+	//for(i=0;i<size_list(list);i++){
+	//	element=get(list, i);
+	//	printf("Elemento en posicion %d es : %d \n", i, element);
+	//}
 
-	clear(list);
-	add(list,2);
-	add(list,4);
-	add(list,6);
-	add(list,8);
+	//clear(list);
+	//add(list,2);
+	//add(list,4);
+	//add(list,6);
+	//add(list,8);
 
-	printf("\n");
-	for(i=0;i<size_list(list);i++){
-		element=get(list, i);
-		printf("Elemento en posicion %d es : %d \n", i, element);
-	}
+	//printf("\n");
+	//for(i=0;i<size_list(list);i++){
+	//	element=get(list, i);
+	//	printf("Elemento en posicion %d es : %d \n", i, element);
+	//}
 
-	List* rev = reverseRec(list);
-	printf("\n");
-	for (i = 0; i<size_list(rev); i++) {
-		printf("Elemento en posicion %d es : %d \n", i, get(rev, i));
-	}
+	//List* rev = reverseRec(list);
+	//printf("\n");
+	//for (i = 0; i<size_list(rev); i++) {
+	//	printf("Elemento en posicion %d es : %d \n", i, get(rev, i));
+	//}
 }
 List* createList(){
 	List* list=(List*)malloc(sizeof(List));
@@ -217,7 +220,7 @@ int lastIndexOf(List* list, int element) {
 	return -1;
 }
 
-
+/*Recursive list reversal*/
 List* reverseRec(List* list) {
 	List* rev;
 	int e;
@@ -230,5 +233,18 @@ List* reverseRec(List* list) {
 		rev = reverseRec(list);
 		add(rev,e);
 		return rev;
+	}
+}
+
+
+/*Removing duplicates just with TDA List operations, without sort*/
+void deleteDup(List* list) {
+	int i, j;
+	for (i = 0; i < size_list(list)-1; i++ ) {
+		for (j = size_list(list)-1; j > i; j--) {
+			if (get(list, i) == get(list, j)) {
+				remove_at(list, j);
+			}
+		}
 	}
 }
