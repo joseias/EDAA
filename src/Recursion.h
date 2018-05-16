@@ -51,4 +51,4 @@ long long arraySumTail(int a[],int size, int pos, long long sum);
 
 void testArrayMin();
 int arrayMin(int a[], int pos);
-int min(int a, int b);
+int minInt(int a, int b);

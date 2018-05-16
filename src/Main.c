@@ -1,10 +1,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT_Set_Array.h"
+#include "SearchSort.h"
+
 
 int main(void)
 {
+	testSearch();
 //	testSet();
 //	testIsPalindromo();
 //	testInsert();
@@ -17,7 +19,7 @@ int main(void)
 //	testArrayMin();
 //	testInsertionSort();
 //	testArraySum();
-	testLinkedList();
+//	testLinkedList();
 //	testStack();
 //	testBalancing();
 //	testPosEval();
@@ -34,4 +36,3 @@ int main(void)
 	system("pause");
 	return 0;
 }
-

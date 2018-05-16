@@ -42,10 +42,17 @@ Node* createNode(int element, Node* next, Node* prev);
 Node* getNodeAt(List* list, int unsigned pos);
 void testLinkedList();
 
-/* ADT List, soluciones a problemas guía */
+
+/********************************************************************************
+* 																				*
+* ADT List, soluciones a problemas guía y evaluaciones...						*
+* 																				*
+********************************************************************************/
+
+/* Index of last ocurrence of element in the list. */
 int lastIndexOf(List* list, int element);
 
-/*Recursive list reversal*/
+/*Recursive list reversal.*/
 List* reverseRec(List* list);
 
 /*Removing duplicates just with TDA List operations*/

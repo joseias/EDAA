@@ -237,7 +237,8 @@ List* reverseRec(List* list) {
 }
 
 
-/*Removing duplicates just with TDA List operations, without sort*/
+/*Removing duplicates just with TDA List operations, without sort. Only one instance for element
+is retained...*/
 void deleteDup(List* list) {
 	int i, j;
 	for (i = 0; i < size_list(list)-1; i++ ) {

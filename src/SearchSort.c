@@ -4,6 +4,30 @@
 #include <stdbool.h>
 #include "SearchSort.h"
 
+void testSearch() {
+	int array[] = {1,3,5,7,9};
+	int size = 5;
+	int key = 10;
+	int pos = binarySearchRec(array, 0, size-1, key);
+	printf("%d -> %d\n", key, pos);
+}
+
+int linearSearchSortedArray(int* array, int size, int key) {
+	int pos;
+	pos = 0;
+
+	while (pos < size && array[pos]< key) {
+		pos++;
+	}
+
+	if ((pos < size) && (array[pos] == key)) {
+		return pos;
+	}
+	else {
+		return -(pos + 1);
+	}
+}
+
 int binarySearch(int* array, int size, int key){
 	int left, right, middle;
 	left=0;
@@ -26,21 +50,31 @@ int binarySearch(int* array, int size, int key){
 	}
 	return -(left+1);
 }
-int linearSearchSortedArray(int* array, int size, int key){
-	int pos;
-	pos=0;
 
-	while(pos < size && array[pos]< key){
-		pos++;
-	}
+int binarySearchRec(int* array, int left, int right, int key) {
+	
+	if (right >= left) {
+		int middle = (left + right) / 2;
 
-	if((pos < size) && (array[pos] == key)){
-		return pos;
+		if (key == array[middle]) {
+			return middle;
+		}
+		else {
+			if (key < array[middle]) {
+				right = middle - 1;
+			}
+			else {
+				left = middle + 1;
+			}
+
+			return binarySearchRec(array, left, right, key);
+		}
 	}
-	else{
-		return -(pos+1);
+	else {
+		return -(left + 1);
 	}
 }
+
 
 
 void testPartitionHoare(){

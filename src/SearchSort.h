@@ -6,8 +6,11 @@
 #include <stdbool.h>
 #include "ADT_List_DoubleLinked.h"
 
-int binarySearch(int* array, int size, int key);
+void testSearch();
 int linearSearch(int* array, int size, int key);
+int binarySearch(int* array, int size, int key);
+int binarySearchRec(int* array, int left, int right, int key);
+
 
 void testPartitionHoare();
 void testQuickSort();
