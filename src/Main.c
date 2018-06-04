@@ -1,12 +1,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "SearchSort.h"
+#include "ADT_Stack_Linked.h"
 
 
 int main(void)
 {
-	testSearch();
+	testStack();
 //	testSet();
 //	testIsPalindromo();
 //	testInsert();
