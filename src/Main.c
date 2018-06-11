@@ -4,9 +4,9 @@
 #include "ADT_Stack_Linked.h"
 
 
-int main(void)
+int main2(void)
 {
-	testStack();
+//	testStack();
 //	testSet();
 //	testIsPalindromo();
 //	testInsert();
