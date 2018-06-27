@@ -25,7 +25,7 @@ typedef struct node
 } Node;
 
 
-typedef struct queue
+typedef struct stack
 {
 	int size;
 	Node* top;
