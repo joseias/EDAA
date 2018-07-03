@@ -21,9 +21,6 @@
     <ClCompile Include="src\ADT_List_DoubleLinked.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ADT_List_DoubleLinked.h">
