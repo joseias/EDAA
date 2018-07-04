@@ -165,7 +165,6 @@ void testReverseQueue() {
 }
 
 void reverseQueue(Queue* q1, Queue* q2) {
-
 	if (isEmptyQueue(q2)) {
 		Stack* tmp = createStack();
 

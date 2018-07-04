@@ -6,7 +6,7 @@
 
 int main(void)
 {
-	testMultArray();
+	testSizeStackNoSize();
 //	testStack();
 //	testSet();
 //	testIsPalindromo();
