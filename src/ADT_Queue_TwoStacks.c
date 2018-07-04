@@ -18,7 +18,7 @@ void testQueue(){
 	enqueue(q,5);
 
 	int e;
-	while(!isEmpty_Queue(q)){
+	while(!isEmptyQueue(q)){
 		e=dequeue(q);
 		printf("%d\n",e);
 	}
@@ -40,10 +40,10 @@ void enqueue(Queue* q, int e){
 }
 
 int front(Queue* q){
-	if(!isEmpty_Queue(q)){
+	if(!isEmptyQueue(q)){
 
-		if(isEmpty_Stack(q->out)){
-			while(!isEmpty_Stack(q->in)){
+		if(isEmptyStack(q->out)){
+			while(!isEmptyStack(q->in)){
 				push(q->out, pop(q->in));
 			}
 		}
@@ -57,10 +57,10 @@ int front(Queue* q){
 }
 
 int dequeue(Queue* q){
-	if(!isEmpty_Queue(q)){
+	if(!isEmptyQueue(q)){
 
-		if(isEmpty_Stack(q->out)){
-			while(!isEmpty_Stack(q->in)){
+		if(isEmptyStack(q->out)){
+			while(!isEmptyStack(q->in)){
 				push(q->out, pop(q->in));
 			}
 		}
@@ -73,10 +73,10 @@ int dequeue(Queue* q){
 	}
 }
 
-int size_queue(Queue* q){
-	return size_stack(q->in) + size_stack(q->out);
+int sizeQueue(Queue* q){
+	return sizeStack(q->in) + sizeStack(q->out);
 }
 
-bool isEmpty_Queue(Queue* q){
-	return size_queue(q)<=0;
+bool isEmptyQueue(Queue* q){
+	return sizeQueue(q)<=0;
 }

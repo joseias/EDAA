@@ -1,11 +1,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT_Stack_Linked.h"
+#include "ProblemSolutions.h"
 
 
-int main2(void)
+int main(void)
 {
+	testMultArray();
 //	testStack();
 //	testSet();
 //	testIsPalindromo();

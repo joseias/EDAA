@@ -18,7 +18,7 @@ void testQueue(){
 	enqueue(q,5);
 
 	int e;
-	while(!isEmpty_Queue(q)){
+	while(!isEmptyQueue(q)){
 		e=dequeue(q);
 		printf("%d\n",e);
 	}
@@ -56,9 +56,9 @@ int dequeue(Queue* q){
 		return e;
 	}
 }
-int size_queue(Queue* q){
+int sizeQueue(Queue* q){
 	return ((q->maxSize - q->front + q->rear) % q->maxSize);
 }
-bool isEmpty_Queue(Queue* q){
-	return !(size_queue(q)>0);
+bool isEmptyQueue(Queue* q){
+	return !(sizeQueue(q)>0);
 }

@@ -27,11 +27,11 @@ typedef struct List
 }List;
 
 List* createList();
-int size_list(List* list);
+int sizeList(List* list);
 void add(List* list, int element);
 void add_at(List* list, int element, unsigned int pos);
 int get(List* list, unsigned int pos);
-void remove_at(List* list, unsigned int pos);
+void removeAt(List* list, unsigned int pos);
 int indexOf(List* list, int element);
 bool contains(List* list, int element);
 void clear(List* list);

@@ -115,11 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ADT_List_DoubleLinked.c" />
+    <ClCompile Include="src\ADT_Queue_Linked.c" />
+    <ClCompile Include="src\ADT_Stack_Linked.c" />
     <ClCompile Include="src\Main.c" />
+    <ClCompile Include="src\ProblemSolutions.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ADT_List_DoubleLinked.h" />
+    <ClInclude Include="src\ADT_Queue_Linked.h" />
+    <ClInclude Include="src\ADT_Stack_Linked.h" />
+    <ClInclude Include="src\ProblemSolutions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

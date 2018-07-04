@@ -33,19 +33,19 @@ void testTreeTraversals(){
 
 	int i;
 	printf("preOrder -> ");
-	for(i=0;i<size_list(pre);i++){
+	for(i=0;i<sizeList(pre);i++){
 		printf("%d ", get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<size_list(in);i++){
+	for(i=0;i<sizeList(in);i++){
 		printf("%d ", get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<size_list(pos);i++){
+	for(i=0;i<sizeList(pos);i++){
 		printf("%d ", get(pos,i));
 	}
 	printf("\n");
@@ -76,19 +76,19 @@ void testTreeInsertion(){
 
 	int i;
 	printf("preOrder -> ");
-	for(i=0;i<size_list(pre);i++){
+	for(i=0;i<sizeList(pre);i++){
 		printf("%d ", get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<size_list(in);i++){
+	for(i=0;i<sizeList(in);i++){
 		printf("%d ", get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<size_list(pos);i++){
+	for(i=0;i<sizeList(pos);i++){
 		printf("%d ", get(pos,i));
 	}
 	printf("\n");
@@ -116,19 +116,19 @@ void testTreeInsertion(){
 	posOrder(t,pos);
 
 	printf("preOrder -> ");
-	for(i=0;i<size_list(pre);i++){
+	for(i=0;i<sizeList(pre);i++){
 		printf("%d ", get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<size_list(in);i++){
+	for(i=0;i<sizeList(in);i++){
 		printf("%d ", get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<size_list(pos);i++){
+	for(i=0;i<sizeList(pos);i++){
 		printf("%d ", get(pos,i));
 	}
 	printf("\n");

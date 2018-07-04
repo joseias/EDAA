@@ -24,7 +24,7 @@ Queue* createQueue();
 void enqueue(Queue* q, int e);
 int front(Queue* q);
 int dequeue(Queue* q);
-int size_queue(Queue* q);
-bool isEmpty_Queue(Queue* q);
+int sizeQueue(Queue* q);
+bool isEmptyQueue(Queue* q);
 
 #endif /* ADT_QUEUE_TWOSTACKS_H_ */

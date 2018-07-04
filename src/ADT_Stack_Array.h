@@ -23,8 +23,8 @@ Stack* createStack(int maxSize);
 void push(Stack* s, int e);
 int peek(Stack* s);
 int pop(Stack* s);
-int size_stack(Stack* s);
-bool isEmpty_Stack(Stack* s);
+int sizeStack(Stack* s);
+bool isEmptyStack(Stack* s);
 
 
 #endif /* ADT_STACK_ARRAY_H_ */

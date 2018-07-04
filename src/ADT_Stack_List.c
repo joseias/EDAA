@@ -20,7 +20,7 @@ void testStack(){
 
 	specific_pop(s, 2);
 
-	while(!isEmpty_Stack(s)){
+	while(!isEmptyStack(s)){
 		printf("Pop -> %d \n", pop(s));
 	}
 }
@@ -34,8 +34,8 @@ void push(Stack* s, int e){
 	add(s->innerList, e);
 }
 int peek(Stack* s){
-	if(!isEmpty_Stack(s)){
-		int last = size_list(s->innerList) - 1;
+	if(!isEmptyStack(s)){
+		int last = sizeList(s->innerList) - 1;
 		return get(s->innerList, last);
 	}
 	else{
@@ -45,10 +45,10 @@ int peek(Stack* s){
 }
 
 int pop(Stack* s){
-	if(!isEmpty_Stack(s)){
-		int last = size_list(s->innerList) - 1;
+	if(!isEmptyStack(s)){
+		int last = sizeList(s->innerList) - 1;
 		int e = get(s->innerList, last);
-		remove_at(s->innerList,last);
+		removeAt(s->innerList,last);
 		return e;
 	}
 	else{
@@ -60,22 +60,22 @@ int pop(Stack* s){
 void specific_pop(Stack* s, int e){
 	Stack* aux = createStack();
 	int tmp;
-	while(!isEmpty_Stack(s)){
+	while(!isEmptyStack(s)){
 		tmp = pop(s);
 		if(tmp != e){
 			push(aux, tmp);
 		}
 	}
 
-	while(!isEmpty_Stack(aux)){
+	while(!isEmptyStack(aux)){
 		push(s, pop(aux));
 	}
 }
 
-int size_stack(Stack* s){
-	return size_list(s->innerList);
+int sizeStack(Stack* s){
+	return sizeList(s->innerList);
 }
 
-bool isEmpty_Stack (Stack* s){
-	return size_stack(s) <= 0;
+bool isEmptyStack (Stack* s){
+	return sizeStack(s) <= 0;
 }

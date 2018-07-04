@@ -20,7 +20,7 @@ void testLinkedList(){
 	deleteDup(list);
 
 
-	for(i=0;i<size_list(list);i++){
+	for(i=0;i<sizeList(list);i++){
 		printf("Elemento en posicion %d es : %d \n", i, get(list, i));
 	}
 
@@ -32,11 +32,11 @@ void testLinkedList(){
 	//index=indexOf(list, element);
 	//printf("Indice de %d es: %d \n", element, index);
 
-	//remove_at(list, index);
+	//removeAt(list, index);
 
 
 	//printf("\n");
-	//for(i=0;i<size_list(list);i++){
+	//for(i=0;i<sizeList(list);i++){
 	//	element=get(list, i);
 	//	printf("Elemento en posicion %d es : %d \n", i, element);
 	//}
@@ -48,14 +48,14 @@ void testLinkedList(){
 	//add(list,8);
 
 	//printf("\n");
-	//for(i=0;i<size_list(list);i++){
+	//for(i=0;i<sizeList(list);i++){
 	//	element=get(list, i);
 	//	printf("Elemento en posicion %d es : %d \n", i, element);
 	//}
 
 	//List* rev = reverseRec(list);
 	//printf("\n");
-	//for (i = 0; i<size_list(rev); i++) {
+	//for (i = 0; i<sizeList(rev); i++) {
 	//	printf("Elemento en posicion %d es : %d \n", i, get(rev, i));
 	//}
 }
@@ -66,7 +66,7 @@ List* createList(){
 	list->tail=NULL;
 	return list;
 }
-int size_list(List* list){
+int sizeList(List* list){
 	return list->size;
 }
 void add(List* list, int element){
@@ -119,7 +119,7 @@ int get(List* list, unsigned int pos){
 	Node* n=getNodeAt(list, pos);
 	return n->value;
 }
-void remove_at(List* list, unsigned int pos){
+void removeAt(List* list, unsigned int pos){
 	Node* cn;
 	Node* cnn;
 	Node* cnp;
@@ -171,7 +171,7 @@ bool contains(List* list, int element){
 }
 void clear(List* list){
 	while(list->size>0){
-		remove_at(list, list->size-1);
+		removeAt(list, list->size-1);
 	}
 }
 int set(List *list, int element, unsigned int pos){
@@ -211,7 +211,7 @@ Node* getNodeAt(List* list, unsigned int pos){
 int lastIndexOf(List* list, int element) {
 
 	int index;
-	for (index = size_list(list) - 1; index >= 0; index--) {
+	for (index = sizeList(list) - 1; index >= 0; index--) {
 		if (get(list, index) == element) {
 			return index;
 		}
@@ -224,12 +224,12 @@ int lastIndexOf(List* list, int element) {
 List* reverseRec(List* list) {
 	List* rev;
 	int e;
-	if (size_list(list) == 0) {
+	if (sizeList(list) == 0) {
 		return createList();
 	}
 	else {
 		e = get(list,0);
-		remove_at(list,0);
+		removeAt(list,0);
 		rev = reverseRec(list);
 		add(rev,e);
 		return rev;
@@ -241,10 +241,10 @@ List* reverseRec(List* list) {
 is retained...*/
 void deleteDup(List* list) {
 	int i, j;
-	for (i = 0; i < size_list(list)-1; i++ ) {
-		for (j = size_list(list)-1; j > i; j--) {
+	for (i = 0; i < sizeList(list)-1; i++ ) {
+		for (j = sizeList(list)-1; j > i; j--) {
 			if (get(list, i) == get(list, j)) {
-				remove_at(list, j);
+				removeAt(list, j);
 			}
 		}
 	}

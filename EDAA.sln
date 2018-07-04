@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDAA", "EDAA.vcxproj", "{BAA11F70-6EA1-4E0C-9A80-B18DA46D29D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{CCA82435-396C-418E-87B3-010D4D8D2DB1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CCA82435-396C-418E-87B3-010D4D8D2DB1}"
 	ProjectSection(SolutionItems) = preProject
 		src\abb.h = src\abb.h
 		src\ADT_BinaryHeap.c = src\ADT_BinaryHeap.c
@@ -39,9 +39,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{CCA8
 		src\Recursion.h = src\Recursion.h
 		src\SearchSort.c = src\SearchSort.c
 		src\SearchSort.h = src\SearchSort.h
-		TextFile1.txt = TextFile1.txt
-		src\TMP.txt = src\TMP.txt
-		src\UVA10718.c = src\UVA10718.c
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01524757-DBBC-4413-B8FA-7D75F6404513}"

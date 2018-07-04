@@ -23,7 +23,7 @@ void push(Stack* s, int e);
 int peek(Stack* s);
 int pop(Stack* s);
 void specific_pop(Stack* s, int e);
-int size_stack(Stack* s);
-bool isEmpty_Stack(Stack* s);
+int sizeStack(Stack* s);
+bool isEmptyStack(Stack* s);
 
 #endif /* ADT_STACK_LIST_H_ */

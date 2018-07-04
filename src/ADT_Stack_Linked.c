@@ -17,7 +17,7 @@ void testStack() {
 	//push(s, 4);
 	//printf("%d \n", pop(s));
 
-	//while (!isEmpty_Stack(s)) {
+	//while (!isEmptyStack(s)) {
 	//	printf("%d \n", pop(s));
 	//}
 
@@ -49,7 +49,7 @@ void testStack() {
 	tmp = (Point*)pop(s);
 	printf("%d %d \n", tmp->x, tmp->y);
 
-	while (!isEmpty_Stack(s)) {
+	while (!isEmptyStack(s)) {
 		tmp = (Point*)pop(s);
 		printf("%d %d \n", tmp->x, tmp->y);
 	}
@@ -64,9 +64,9 @@ Stack* createStack() {
 }
 
 void push(Stack* s, Object e) {
-	Node* tmp = createNode(e, NULL);
+	NodeStack* tmp = createNodeStack(e, NULL);
 	
-	if (isEmpty_Stack(s)) {
+	if (isEmptyStack(s)) {
 		s->top = tmp;
 	}
 	else {
@@ -77,7 +77,7 @@ void push(Stack* s, Object e) {
 }
 
 Object peek(Stack* s) {
-	if (!isEmpty_Stack(s)) {
+	if (!isEmptyStack(s)) {
 		return s->top->value;
 	}
 	else {
@@ -87,9 +87,9 @@ Object peek(Stack* s) {
 }
 
 Object pop(Stack* s) {
-	if (!isEmpty_Stack(s)) {
+	if (!isEmptyStack(s)) {
 		Object value = s->top->value;
-		Node* tmp = s->top;
+		NodeStack* tmp = s->top;
 		s->top = tmp->next;
 		free(tmp);
 		s->size--;
@@ -100,16 +100,16 @@ Object pop(Stack* s) {
 		exit(EXIT_FAILURE);
 	}
 }
-int size_stack(Stack* s) {
+int sizeStack(Stack* s) {
 	return s->size;
 }
 
-bool isEmpty_Stack(Stack* s) {
+bool isEmptyStack(Stack* s) {
 	return s->size == NULL;
 }
 
-Node* createNode(Object element, Node* next) {
-	Node* nn = (Node*)malloc(sizeof(Node));
+NodeStack* createNodeStack(Object element, NodeStack* next) {
+	NodeStack* nn = (NodeStack*)malloc(sizeof(NodeStack));
 	nn->value = element;
 	nn->next = next;
 	return nn;

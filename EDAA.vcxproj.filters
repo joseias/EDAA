@@ -18,13 +18,25 @@
     <ClCompile Include="src\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ADT_List_DoubleLinked.c">
+    <ClCompile Include="src\ADT_Stack_Linked.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ADT_Queue_Linked.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ProblemSolutions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ADT_List_DoubleLinked.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\ADT_Queue_Linked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ADT_Stack_Linked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ProblemSolutions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

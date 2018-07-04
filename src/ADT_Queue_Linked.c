@@ -21,7 +21,7 @@ void testQueue(){
 	multi_enqueue(q,elements,4);
 
 	int e;
-	while(!isEmpty_Queue(q)){
+	while(!isEmptyQueue(q)){
 		e=dequeue(q);
 		printf("%d\n",e);
 	}
@@ -35,7 +35,7 @@ Queue* createQueue(){
 	return q;
 }
 void enqueue(Queue* q, int e){
-	Node* nn=createNode(e,NULL);
+	NodeQueue* nn=createNodeQueue(e,NULL);
 	if(q->size == 0){				/*Cola vacía*/
 		q->front=nn;
 		q->rear=nn;
@@ -67,7 +67,7 @@ int front(Queue* q){
 int dequeue(Queue* q){
 	if(q->size>0){
 		int e=q->front->value;
-		Node* tmp=q->front;
+		NodeQueue* tmp=q->front;
 		q->front=q->front->next;
 		free(tmp);
 		q->size--;
@@ -79,16 +79,16 @@ int dequeue(Queue* q){
 	}
 }
 
-int size_queue(Queue* q){
+int sizeQueue(Queue* q){
 	return q->size;
 }
 
-bool isEmpty_Queue(Queue* q){
+bool isEmptyQueue(Queue* q){
 	return q->size <=0 ;
 }
 
-Node* createNode(int element, Node* next){
-	Node* nn=(Node*) malloc(sizeof(Node));
+NodeQueue* createNodeQueue(int element, NodeQueue* next){
+	NodeQueue* nn=(NodeQueue*) malloc(sizeof(NodeQueue));
 	nn->value=element;
 	nn->next=next;
 	return nn;

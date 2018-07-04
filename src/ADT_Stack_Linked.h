@@ -18,17 +18,17 @@ typedef struct point {
 
 typedef Point* Object;
 
-typedef struct node
+typedef struct nodeStack
 {
 	Object value;
-	struct node* next;
-} Node;
+	struct nodeStack* next;
+} NodeStack;
 
 
 typedef struct stack
 {
 	int size;
-	Node* top;
+	NodeStack* top;
 }Stack;
 
 void testStack();
@@ -36,8 +36,8 @@ Stack* createStack();
 void push(Stack* s, Object e);
 Object peek(Stack* s);
 Object pop(Stack* s);
-int size_stack(Stack* s);
-bool isEmpty_Stack(Stack* s);
+int sizeStack(Stack* s);
+bool isEmptyStack(Stack* s);
 
-Node* createNode(Object element, Node* next);
+NodeStack* createNodeStack(Object element, NodeStack* next);
 #endif /* ADT_STACK_LINKED_H_ */

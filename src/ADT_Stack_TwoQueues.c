@@ -8,7 +8,7 @@ void testStack(){
 
 	printf("Peek -> %d \n", peek(s));
 
-	while(!isEmpty_Stack(s)){
+	while(!isEmptyStack(s)){
 		printf("Pop -> %d \n", pop(s));
 	}
 }
@@ -25,7 +25,7 @@ void push(Stack* s, int e){
 }
 
 int peek(Stack* s){
-	while(size_queue(s->in) > 1){
+	while(sizeQueue(s->in) > 1){
 		enqueue(s->out, dequeue(s->in));
 	}
 	int e = dequeue(s->in);
@@ -37,7 +37,7 @@ int peek(Stack* s){
 	return e;
 }
 int pop(Stack* s){
-	while(size_queue(s->in) > 1){
+	while(sizeQueue(s->in) > 1){
 		enqueue(s->out, dequeue(s->in));
 	}
 	int e = dequeue(s->in);
@@ -47,9 +47,9 @@ int pop(Stack* s){
 	s->out=tmp;
 	return e;
 }
-int size_stack(Stack* s){
-	return size_queue(s->in) + size_queue(s->out); /*s->out deberia estar vacio*/
+int sizeStack(Stack* s){
+	return sizeQueue(s->in) + sizeQueue(s->out); /*s->out deberia estar vacio*/
 }
-bool isEmpty_Stack(Stack* s){
-	return size_stack(s) <= 0;
+bool isEmptyStack(Stack* s){
+	return sizeStack(s) <= 0;
 }

@@ -16,7 +16,7 @@ void testQueue(){
 	enqueue(q,3);
 	enqueue(q,4);
 	int e;
-	while(!isEmpty_Queue(q)){
+	while(!isEmptyQueue(q)){
 		e=dequeue(q);
 		printf("%d\n",e);
 	}
@@ -32,7 +32,7 @@ void enqueue(Queue* q, int e){
 	add(q->innerList, e);
 }
 int front(Queue* q){
-	if(!isEmpty_Queue(q)){
+	if(!isEmptyQueue(q)){
 		return get(q->innerList,0);
 	}
 	else{
@@ -42,9 +42,9 @@ int front(Queue* q){
 }
 int dequeue(Queue* q){
 	int e=0;
-	if(!isEmpty_Queue(q)){
+	if(!isEmptyQueue(q)){
 		e=get(q->innerList,0);
-		remove_at(q->innerList,0);
+		removeAt(q->innerList,0);
 		return e;
 	}
 	else{
@@ -52,10 +52,10 @@ int dequeue(Queue* q){
 		exit(EXIT_FAILURE);
 	}
 }
-int size_queue(Queue* q){
-	return size_list(q->innerList);
+int sizeQueue(Queue* q){
+	return sizeList(q->innerList);
 }
-bool isEmpty_Queue(Queue* q){
-	return size_queue(q)<=0;
+bool isEmptyQueue(Queue* q){
+	return sizeQueue(q)<=0;
 }
 

@@ -13,7 +13,7 @@ void testStack(){
 
 	printf("Peek -> %d \n", peek(s));
 
-	while(!isEmpty_Stack(s)){
+	while(!isEmptyStack(s)){
 		printf("Pop -> %d \n", pop(s));
 	}
 }
@@ -64,9 +64,9 @@ int pop(Stack* s){
 	}
 }
 
-int size_stack(Stack* s){
+int sizeStack(Stack* s){
 	return s->lastIndex+1;
 }
-bool isEmpty_Stack(Stack* s){
+bool isEmptyStack(Stack* s){
 	return !(s->lastIndex >= 0);
 }
