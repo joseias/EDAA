@@ -19,7 +19,7 @@ typedef struct binaryTree{
 
 void testTreeInsertion();
 void testTreeTraversals();
-BinaryTree* createTree();
+BinaryTree* createTree(int element, BinaryTree* left, BinaryTree* right);
 void bstInsert(BinaryTree* t, int element);
 void bstDelete(BinaryTree* t, int element);
 BinaryTree* bstSearch(BinaryTree* t, int element);
