@@ -136,12 +136,15 @@ void testTreeInsertion(){
 
 }
 
-BinaryTree* createTree(){
+BinaryTree* createTree(int element, BinaryTree* left, BinaryTree* right){
 	BinaryTree* t=(BinaryTree*) malloc(sizeof(BinaryTree));
-	t->element = 0;
-	t->left=NULL;
-	t->right=NULL;
-	t->size=0;
+	t->element = element;
+	t->left=left;
+	t->right=right;
+	int lsize = left == NULL? 0 : left ->size;
+	int rsize = right == NULL? 0 : right ->size;
+	t->size= lsize + rsize;
+	
 	return t;
 }
 
@@ -155,11 +158,7 @@ void bstInsert(BinaryTree* t, int element){
 						bstInsert(t->left, element);
 					}
 					else{
-						t->left = createTree();
-						t->left->element = element;
-						t->left->size=1;
-						t->left->left=NULL;
-						t->left->right=NULL;
+						t->left = createTree(element, NULL, NULL);
 					}
 				}
 				/*Insert to the right*/
@@ -168,11 +167,7 @@ void bstInsert(BinaryTree* t, int element){
 						bstInsert(t->right, element);
 					}
 					else{
-						t->right = createTree();
-						t->right->element = element;
-						t->right->size=1;
-						t->right->left=NULL;
-						t->right->right=NULL;
+						t->right = createTree(element, NULL, NULL);
 					}
 				}
 			}
