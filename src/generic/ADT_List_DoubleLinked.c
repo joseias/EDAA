@@ -30,6 +30,9 @@ void testLinkedList(){
 	p4->x = 4;
 	p4->y = 4;
 
+	t->x = 5;
+	t->y = 5;
+
 	add(list, p1);
 	add(list, p2);
 	add(list, p3);
@@ -48,6 +51,7 @@ void testLinkedList(){
 	index = 1;
 	remove_at(list, index);
 
+	set(list, t, 1);
 
 	printf("\n");
 	for(i=0;i<size_list(list);i++){
@@ -191,7 +195,7 @@ void clear(List* list){
 	}
 }
 
-int set(List *list, void* element, unsigned int pos){
+void* set(List *list, void* element, unsigned int pos){
 	Node* n=getNodeAt(list, pos);
 	int oldValue=n->data;
 	n->data=element;

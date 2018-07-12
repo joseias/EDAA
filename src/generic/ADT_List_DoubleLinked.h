@@ -14,16 +14,14 @@
 #include "Comparators.h"
 #include "Destructors.h"
 
-typedef struct node
-{
+typedef struct node{
 	void* data;
 	struct node* next;
 	struct node* prev;
 } Node;
 
 
-typedef struct List
-{
+typedef struct List{
 	int size;
 	Node* head;
 	Node* tail;
@@ -41,7 +39,7 @@ void remove_at(List* list, unsigned int pos);
 int indexOf(List* list, void* element);
 bool contains(List* list, void* element);
 void clear(List* list);
-int set(List *list, int element, unsigned int pos);
+void* set(List *list, void* element, unsigned int pos);
 
 /* ADT List, funciones auxiliares pero que no forman parte de la especificacion */
 Node* createNode(void* element, Node* next, Node* prev);

@@ -1,9 +1,8 @@
 #include "Comparators.h"
 
-int compareInt(const void *lhs, const void *rhs)
-{
-	const int *llhs = (const int *)lhs;
-	const int *lrhs = (const int *)rhs;
+int compareInt(const void *lhs, const void *rhs){
+	const int *llhs = (const int*)lhs;
+	const int *lrhs = (const int*)rhs;
 
 	if (*llhs < *lrhs) {
 		return -1;
@@ -17,8 +16,7 @@ int compareInt(const void *lhs, const void *rhs)
 	return 0;
 }
 
-int comparePoints(const void* p1, const void* p2)
-{
+int comparePoints(const void* p1, const void* p2){
 	const Point* llhs = (const Point*) p1;
 	const Point* lrhs = (const Point*) p2;
 
