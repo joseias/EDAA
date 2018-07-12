@@ -1,12 +1,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ProblemSolutions.h"
-
+#include "ADT_List_DoubleLinked.h"
 
 int main(void)
 {
-	testSizeStackNoSize();
+//	testSizeStackNoSize();
 //	testStack();
 //	testSet();
 //	testIsPalindromo();
@@ -20,7 +19,7 @@ int main(void)
 //	testArrayMin();
 //	testInsertionSort();
 //	testArraySum();
-//	testLinkedList();
+	testLinkedList();
 //	testStack();
 //	testBalancing();
 //	testPosEval();

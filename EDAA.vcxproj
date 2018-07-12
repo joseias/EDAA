@@ -18,6 +18,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\generic\ADT_HashTable.c" />
+    <ClCompile Include="src\generic\ADT_List_DoubleLinked.c" />
+    <ClCompile Include="src\generic\Comparators.c" />
+    <ClCompile Include="src\generic\Destructors.c" />
+    <ClCompile Include="src\generic\Main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\generic\ADT_HashTable.h" />
+    <ClInclude Include="src\generic\ADT_List_DoubleLinked.h" />
+    <ClInclude Include="src\generic\Comparators.h" />
+    <ClInclude Include="src\generic\Destructors.h" />
+    <ClInclude Include="src\generic\Misc_Data_Types.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{BAA11F70-6EA1-4E0C-9A80-B18DA46D29D8}</ProjectGuid>
@@ -114,17 +128,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\ADT_Queue_Linked.c" />
-    <ClCompile Include="src\ADT_Stack_Linked.c" />
-    <ClCompile Include="src\Main.c" />
-    <ClCompile Include="src\ProblemSolutions.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\ADT_Queue_Linked.h" />
-    <ClInclude Include="src\ADT_Stack_Linked.h" />
-    <ClInclude Include="src\ProblemSolutions.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -6,40 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDAA", "EDAA.vcxproj", "{BAA11F70-6EA1-4E0C-9A80-B18DA46D29D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CCA82435-396C-418E-87B3-010D4D8D2DB1}"
-	ProjectSection(SolutionItems) = preProject
-		src\abb.h = src\abb.h
-		src\ADT_BinaryHeap.c = src\ADT_BinaryHeap.c
-		src\ADT_BinaryHeap.h = src\ADT_BinaryHeap.h
-		src\ADT_BinaryTreeRecursive.c = src\ADT_BinaryTreeRecursive.c
-		src\ADT_BinaryTreeRecursive.h = src\ADT_BinaryTreeRecursive.h
-		src\ADT_List_DoubleLinked.c = src\ADT_List_DoubleLinked.c
-		src\ADT_List_DoubleLinked.h = src\ADT_List_DoubleLinked.h
-		src\ADT_Queue_CircularArray.c = src\ADT_Queue_CircularArray.c
-		src\ADT_Queue_CircularArray.h = src\ADT_Queue_CircularArray.h
-		src\ADT_Queue_Linked.c = src\ADT_Queue_Linked.c
-		src\ADT_Queue_Linked.h = src\ADT_Queue_Linked.h
-		src\ADT_Queue_List.c = src\ADT_Queue_List.c
-		src\ADT_Queue_List.h = src\ADT_Queue_List.h
-		src\ADT_Queue_TwoStacks.c = src\ADT_Queue_TwoStacks.c
-		src\ADT_Queue_TwoStacks.h = src\ADT_Queue_TwoStacks.h
-		src\ADT_Set_Array.c = src\ADT_Set_Array.c
-		src\ADT_Set_Array.h = src\ADT_Set_Array.h
-		src\ADT_Stack_Array.c = src\ADT_Stack_Array.c
-		src\ADT_Stack_Array.h = src\ADT_Stack_Array.h
-		src\ADT_Stack_Linked.c = src\ADT_Stack_Linked.c
-		src\ADT_Stack_Linked.h = src\ADT_Stack_Linked.h
-		src\ADT_Stack_List.c = src\ADT_Stack_List.c
-		src\ADT_Stack_List.h = src\ADT_Stack_List.h
-		src\ADT_Stack_TwoQueues.c = src\ADT_Stack_TwoQueues.c
-		src\ADT_Stack_TwoQueues.h = src\ADT_Stack_TwoQueues.h
-		src\Main.c = src\Main.c
-		src\ProblemSolutions.c = src\ProblemSolutions.c
-		src\ProblemSolutions.h = src\ProblemSolutions.h
-		src\Recursion.c = src\Recursion.c
-		src\Recursion.h = src\Recursion.h
-		src\SearchSort.c = src\SearchSort.c
-		src\SearchSort.h = src\SearchSort.h
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01524757-DBBC-4413-B8FA-7D75F6404513}"
 EndProject
