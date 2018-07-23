@@ -12,8 +12,6 @@
 typedef struct item{
 	void* key;
 	void* value;
-
-	int (*hash) (const void* key);
 } Item;
 
 
@@ -21,17 +19,20 @@ typedef struct hashTable{
 	int size;
 	List** table;
 	int tableSize;
-
-	void(*destroyer)(const void*); /* Pointer to a function used to propertly free the data in the list, could be NULL */
+	int(*hashFunction) (const void* key);	/* Pointer to a function to compute the key hash*/
+	int(*keyComparator)(const void *, const void *);
+	void(*destroyer)(const void*);	/* Pointer to a function used to propertly free values, could be NULL */
 }HashTable;
 
 
-HashTable* createHashTableIntKey();
-HashTable* createHashTableStringKey();
+HashTable* createHashTable(	int(*hash) (const void* key), 
+							int(*comparator)(const void *, const void *),
+							void(*destroyer)(const void*));
 void* get(void* key);
 void put(void* key, void* value);
 
-
+int hashString(const void *lhs);
+int hashInt(const void *lhs);
 int compareItemInt(const void *lhs, const void *rhs);
 int compareItemString(const void *lhs, const void *rhs);
 

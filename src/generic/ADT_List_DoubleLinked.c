@@ -1,17 +1,17 @@
-/********************************************************************************
+ï»¿/********************************************************************************
 * 																				*
-* ADT List, implementada como Lista Doblemente Enlazada 						*
+* ADT List, implemented as Double Linked List									*
 * LOUDON, Kyle. Mastering Algorithms with C.. " O'Reilly Media, Inc.", 1999.  	*
 *																				*
 ********************************************************************************/
 
 #include "ADT_List_DoubleLinked.h"
 
-void testLinkedList(){
+void testLinkedList() {
 	int i, index;
 	Point* element;
 
-	List* list=createList(comparePoints, destroyPoints);
+	List* list = createList(comparePoints, destroyPoints);
 	Point* p1 = (Point*)malloc(sizeof(Point));
 	Point* p2 = (Point*)malloc(sizeof(Point));
 	Point* p3 = (Point*)malloc(sizeof(Point));
@@ -40,9 +40,9 @@ void testLinkedList(){
 
 
 
-	for(i=0;i<size_list(list);i++){
-		element = (Point*) get(list, i);
-		printf("Elemento en posicion %d es : ( %d, %d) \n", i, element->x, element->y);
+	for (i = 0; i<size_list(list); i++) {
+		element = (Point*)get(list, i);
+		printf("Element at position %d is : ( %d, %d) \n", i, element->x, element->y);
 	}
 
 	printf("\n");
@@ -51,178 +51,180 @@ void testLinkedList(){
 	index = 1;
 	remove_at(list, index);
 
-	set(list, t, 1);
+	printf("\n");
+	printf("Setting (%d, %d) at position %d \n", t->x, t->y, index);
+	set(list, t, index);
 
 	printf("\n");
-	for(i=0;i<size_list(list);i++){
+	for (i = 0; i<size_list(list); i++) {
 		element = (Point*)get(list, i);
-		printf("Elemento en posicion %d es : ( %d, %d) \n", i, element->x, element->y);
+		printf("Element at position %d is : ( %d, %d) \n", i, element->x, element->y);
 	}
 
 	clear(list);
 	printf("\n");
 	for (i = 0; i<size_list(list); i++) {
 		element = (Point*)get(list, i);
-		printf("Elemento en posicion %d es : ( %d, %d) \n", i, element->x, element->y);
+		printf("Element at position %d is : ( %d, %d) \n", i, element->x, element->y);
 	}
 }
 
 
 List* createList(int(*comparator)(const void *, const void *), void(*destroyer)(const void*)) {
-	List* list=(List*)malloc(sizeof(List));
-	list->size=0;
-	list->head=NULL;
-	list->tail=NULL;
+	List* list = (List*)malloc(sizeof(List));
+	list->size = 0;
+	list->head = NULL;
+	list->tail = NULL;
 	list->comparator = comparator;
 	list->destroyer = destroyer;
 	return list;
 }
 
-int size_list(List* list){
+int size_list(List* list) {
 	return list->size;
 }
 
-void add(List* list, void* element){
+void add(List* list, void* element) {
 	add_at(list, element, list->size);
 }
 
-void add_at(List* list, void* element, unsigned int pos){
+void add_at(List* list, void* element, unsigned int pos) {
 	Node* nn;
 	Node* cn;
 	Node* tmpl;
 
-	if(pos>=0 && pos <= list->size){
-		nn=createNode(element, NULL, NULL);
+	if (pos >= 0 && pos <= list->size) {
+		nn = createNode(element, NULL, NULL);
 
-		if(list->size == 0){				/*Lista vacía*/
-			list->head=nn;
-			list->tail=nn;
+		if (list->size == 0) {				/* The list is empty*/
+			list->head = nn;
+			list->tail = nn;
 		}
-		else{								/*Lista no vacia*/
-			if(pos==list->size){ 			/* Si pos es el final de la lista*/
-				tmpl=list->tail;
-				tmpl->next=nn;
-				nn->prev=tmpl;
-				list->tail=nn;
+		else {								/* The list is not empty*/
+			if (pos == list->size) { 		/* If pos points to the list end*/
+				tmpl = list->tail;
+				tmpl->next = nn;
+				nn->prev = tmpl;
+				list->tail = nn;
 			}
-			else{
-				cn=getNodeAt(list,pos);		/*En este punto pos es una posicion válida de la lista*/
+			else {
+				cn = getNodeAt(list, pos);	/* At this point, pos is a valid position */
 
-				if(pos==0){ 				/*Si pos es el comienzo de la lista*/
-					cn->prev=nn;
-					nn->next=cn;
-					list->head=cn;
+				if (pos == 0) { 			/* If pos points to the list init*/
+					cn->prev = nn;
+					nn->next = cn;
+					list->head = cn;
 				}
-				else{ 						/*Se añade en una posicion intermedia*/
-					(cn->prev)->next=nn;
-					nn->prev=cn->prev;
-					cn->prev=nn;
-					nn->next=cn;
+				else { 						/* Adds to intermediate position */
+					(cn->prev)->next = nn;
+					nn->prev = cn->prev;
+					cn->prev = nn;
+					nn->next = cn;
 				}
 			}
 		}
 		list->size++;
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 
 }
 
-void* get(List* list, unsigned int pos){
-	Node* n=getNodeAt(list, pos);
+void* get(List* list, unsigned int pos) {
+	Node* n = getNodeAt(list, pos);
 	return n->data;
 }
-void remove_at(List* list, unsigned int pos){
+void remove_at(List* list, unsigned int pos) {
 	Node* cn;
 	Node* cnn;
 	Node* cnp;
 
-	if(pos>=0 && pos < list->size){
-		cn=getNodeAt(list, pos);
+	if (pos >= 0 && pos < list->size) {
+		cn = getNodeAt(list, pos);
 
-		cnp=cn->prev;
-		cnn=cn->next;
+		cnp = cn->prev;
+		cnn = cn->next;
 
 
-		if(cnp == NULL){ /*cn = head (es el que tiene ->prev = NULL)*/
-			list->head=cnn;
+		if (cnp == NULL) { /*cn = head (the one with ->prev = NULL)*/
+			list->head = cnn;
 		}
-		else{
-			cnp->next=cnn;
+		else {
+			cnp->next = cnn;
 		}
 
-		if(cnn == NULL){ /*cn = trail (es el que tiene ->next = NULL)*/
-			list->tail=cnp;
+		if (cnn == NULL) { /*cn = trail (the one with ->next = NULL)*/
+			list->tail = cnp;
 		}
-		else{
-			cnn->prev=cnp;
+		else {
+			cnn->prev = cnp;
 		}
 		list->size--;
-		
-		if (list->destroyer!= NULL) {
+
+		if (list->destroyer != NULL) {
 			list->destroyer(cn->data);
 		}
 		free(cn);
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 }
 
-int indexOf(List* list, void* element){
-	int index=0;
-	Node* tmp=list->head;
+int indexOf(List* list, void* element) {
+	int index = 0;
+	Node* tmp = list->head;
 
-	while(tmp != NULL){
-		if(list->comparator(tmp->data, element) == 0){
+	while (tmp != NULL) {
+		if (list->comparator(tmp->data, element) == 0) {
 			return index;
 		}
-		tmp=tmp->next;
+		tmp = tmp->next;
 		index++;
 	}
 	return -1;
 }
 
-bool contains(List* list, void* element){
+bool contains(List* list, void* element) {
 	return indexOf(list, element) != -1;
 }
-void clear(List* list){
-	while(list->size>0){
-		remove_at(list, list->size-1);
+void clear(List* list) {
+	while (list->size>0) {
+		remove_at(list, list->size - 1);
 	}
 }
 
-void* set(List *list, void* element, unsigned int pos){
-	Node* n=getNodeAt(list, pos);
-	int oldValue=n->data;
-	n->data=element;
+void* set(List *list, void* element, unsigned int pos) {
+	Node* n = getNodeAt(list, pos);
+	int oldValue = n->data;
+	n->data = element;
 	return oldValue;
 }
 
-Node* createNode(void* element, Node* next, Node* prev){
-	Node* nn=(Node*) malloc(sizeof(Node));
-	nn->data=element;
-	nn->next=next;
-	nn->prev=prev;
+Node* createNode(void* element, Node* next, Node* prev) {
+	Node* nn = (Node*)malloc(sizeof(Node));
+	nn->data = element;
+	nn->next = next;
+	nn->prev = prev;
 
 	return nn;
 }
-Node* getNodeAt(List* list, unsigned int pos){
+Node* getNodeAt(List* list, unsigned int pos) {
 	Node* tmp;
 	int i;
-	if(pos>=0 && pos < list->size){
-		tmp=list->head;
+	if (pos >= 0 && pos < list->size) {
+		tmp = list->head;
 
-		for(i=1;i<=pos;i++){
-			tmp=tmp->next;
+		for (i = 1; i <= pos; i++) {
+			tmp = tmp->next;
 		}
 
 		return tmp;
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
