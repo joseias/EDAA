@@ -9,10 +9,10 @@
 
 #include "ADT_List_DoubleLinked.h"
 
-typedef struct item{
+typedef struct entry{
 	void* key;
 	void* value;
-} Item;
+} Entry;
 
 
 typedef struct hashTable{
@@ -21,15 +21,19 @@ typedef struct hashTable{
 	int tableSize;
 	int(*hashFunction) (const void* key);	/* Pointer to a function to compute the key hash*/
 	int(*keyComparator)(const void *, const void *);
+	int(*entryComparator)(const void *, const void *);
 	void(*destroyer)(const void*);	/* Pointer to a function used to propertly free values, could be NULL */
 }HashTable;
 
 
 HashTable* createHashTable(	int(*hash) (const void* key), 
-							int(*comparator)(const void *, const void *),
+							int(*keyCmp)(const void *, const void *),
+							int(*entryCmp)(const void *, const void *),
 							void(*destroyer)(const void*));
-void* get(void* key);
-void put(void* key, void* value);
+
+void* get(HashTable* ht, void* key);
+void* put(HashTable* ht, void* key, void* value);
+void* remove(HashTable* ht, void* key);
 
 int hashString(const void *lhs);
 int hashInt(const void *lhs);
