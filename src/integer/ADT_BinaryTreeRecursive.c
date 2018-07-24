@@ -1,6 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT BTree												 						*
+* Recursive definition of the ADT Binary Tree									*
 * 																				*
 ********************************************************************************/
 
@@ -288,25 +288,6 @@ BinaryTree* bstFindMax(BinaryTree* t){
 }
 
 
-
-
-//BinaryTree* bstSuccessor(BinaryTree* t, int element){
-//	if(t != NULL){
-//		if(t->right != NULL){
-//			return bstFindMin(t->right);
-//		}
-//	}
-//	else{
-//		return NULL;
-//	}
-//}
-//BinaryTree* bstPredecessor(BinaryTree* t, int element){
-//	return NULL;
-//}
-
-
-
-
 void preOrder(BinaryTree* t, List* elements){
 	add(elements, t->element);
 	if(t->left != NULL){
@@ -327,6 +308,7 @@ void inOrder(BinaryTree* t, List* elements){
 		inOrder(t->right,elements);
 	}
 }
+
 void posOrder(BinaryTree* t, List* elements){
 
 	if(t->left != NULL){
@@ -337,6 +319,7 @@ void posOrder(BinaryTree* t, List* elements){
 	}
 	add(elements, t->element);
 }
+
 int height(BinaryTree* t){
 	if(t->left == NULL && t-> right == NULL){
 		return 0;
@@ -355,6 +338,7 @@ int height(BinaryTree* t){
 		return 1+ (leftH>rightH? leftH:rightH);
 	}
 }
+
 int size_tree(BinaryTree* t){
 	return t->size;
 }

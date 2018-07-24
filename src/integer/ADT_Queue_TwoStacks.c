@@ -1,54 +1,55 @@
 /********************************************************************************
 * 																				*
-* ADT Queue, implementada utilizando dos pilas		      				 		*
+* ADT Queue, implementaded with two stacks (single node stack)      			*
 * 																				*
 ********************************************************************************/
+
 #include "ADT_Queue_TwoStacks.h"
 
-void testQueue(){
-	Queue *q=createQueue();
-	enqueue(q,1);
-	enqueue(q,2);
-	enqueue(q,3);
+void qs_test(){
+	qs_Queue* q=qs_create();
+	qs_enqueue(q,1);
+	qs_enqueue(q,2);
+	qs_enqueue(q,3);
 
-	printf("Dequeued- > %d\n", dequeue(q));
-	printf("Dequeued- > %d\n", dequeue(q));
+	printf("Dequeued- > %d\n", qs_dequeue(q));
+	printf("Dequeued- > %d\n", qs_dequeue(q));
 
-	enqueue(q,4);
-	enqueue(q,5);
+	qs_enqueue(q,4);
+	qs_enqueue(q,5);
 
 	int e;
-	while(!isEmptyQueue(q)){
-		e=dequeue(q);
+	while(!qs_isEmpty(q)){
+		e=qs_dequeue(q);
 		printf("%d\n",e);
 	}
 }
 
-Queue* createQueue(){
-	Queue* q = (Queue*) malloc(sizeof(Queue));
+qs_Queue* qs_create(){
+	qs_Queue* q = (qs_Queue*) malloc(sizeof(qs_Queue));
 
-	Stack* in=createStack();
-	Stack* out=createStack();
+	sl_Stack* in=sl_create();
+	sl_Stack* out=sl_create();
 	q->in=in;
 	q->out=out;
 
 	return q;
 }
 
-void enqueue(Queue* q, int e){
-	push(q->in,e);
+void qs_enqueue(qs_Queue* q, int e){
+	sl_push(q->in,e);
 }
 
-int front(Queue* q){
-	if(!isEmptyQueue(q)){
+int qs_front(qs_Queue* q){
+	if(!qs_isEmpty(q)){
 
-		if(isEmptyStack(q->out)){
-			while(!isEmptyStack(q->in)){
-				push(q->out, pop(q->in));
+		if(sl_isEmpty(q->out)){
+			while(!sl_isEmpty(q->in)){
+				sl_push(q->out, sl_pop(q->in));
 			}
 		}
 
-		return peek(q->out);
+		return sl_peek(q->out);
 	}
 	else{
 		fprintf(stderr, "Queue is empty...");
@@ -56,16 +57,16 @@ int front(Queue* q){
 	}
 }
 
-int dequeue(Queue* q){
-	if(!isEmptyQueue(q)){
+int qs_dequeue(qs_Queue* q){
+	if(!qs_isEmpty(q)){
 
-		if(isEmptyStack(q->out)){
-			while(!isEmptyStack(q->in)){
-				push(q->out, pop(q->in));
+		if(sl_isEmpty(q->out)){
+			while(!sl_isEmpty(q->in)){
+				sl_push(q->out, sl_pop(q->in));
 			}
 		}
 
-		return pop(q->out);
+		return sl_pop(q->out);
 	}
 	else{
 		fprintf(stderr, "Queue is empty...");
@@ -73,10 +74,10 @@ int dequeue(Queue* q){
 	}
 }
 
-int sizeQueue(Queue* q){
-	return sizeStack(q->in) + sizeStack(q->out);
+int qs_size(qs_Queue* q){
+	return sl_size(q->in) + sl_size(q->out);
 }
 
-bool isEmptyQueue(Queue* q){
-	return sizeQueue(q)<=0;
+bool qs_isEmpty(qs_Queue* q){
+	return qs_size(q)<=0;
 }

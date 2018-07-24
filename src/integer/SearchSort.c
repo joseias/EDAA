@@ -12,6 +12,93 @@ void testSearch() {
 	printf("%d -> %d\n", key, pos);
 }
 
+void testInsertionSort() {
+	int i;
+	int size = 7;					/*Elements in a*/
+	int a[] = { 4,6,2,5,3,5,1 };
+
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+
+	insertionSort(a, size);
+
+	printf("\n");
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+}
+
+void testSelectionSort() {
+	int i;
+	int size = 7;						/*Elements in a*/
+	int a[] = { 4,6,2,5,3,5,1 };
+
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+
+	selectionSort(a, size);
+
+	printf("\n");
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+}
+
+void testQuickSort() {
+	int i;
+	int size = 7;						/*Elements in a*/
+	int a[] = { 4,6,2,5,3,5,1 };
+
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+
+	quickSortG(a, 0, size - 1);
+
+	printf("\n");
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+}
+
+void testQuickSortList() {
+	int i;
+
+	ll_List* list = ll_create();
+	ll_add(list, 4);
+	ll_add(list, 6);
+	ll_add(list, 2);
+	ll_add(list, 5);
+	ll_add(list, 3);
+	ll_add(list, 5);
+	ll_add(list, 1);
+
+	for (i = 0; i<ll_size(list); i++) {
+		printf("%d ", ll_get(list, i));
+	}
+
+	quickSortGList(list, 0, ll_size(list) - 1);
+
+	printf("\n");
+	for (i = 0; i<ll_size(list); i++) {
+		printf("%d ", ll_get(list, i));
+	}
+}
+
+void testPartitionHoare() {
+	int i;
+	int size = 7;						/*Elements in a*/
+	int a[] = { 4,6,2,5,3,5,1 };
+	int s = partitionHoareG(a, 0, size - 1);
+	printf("s-> %d \n", s);
+	for (i = 0; i<size; i++) {
+		printf("%d ", a[i]);
+	}
+
+}
+
 int linearSearchSortedArray(int* array, int size, int key) {
 	int pos;
 	pos = 0;
@@ -75,42 +162,49 @@ int binarySearchRec(int* array, int left, int right, int key) {
 	}
 }
 
+/**
+* Implements InsertionSort as in:
+* LEVITIN, Anany. Introduction to the Design and Analysis of Algorithms. 3rd Edition. Pearson, 2011.
+*/
+void insertionSort(int a[], int size) {
+	int i, v, j;
 
-
-void testPartitionHoare(){
-	int i;
-	int size=7; /*Igual a la cantidad de elementos en a*/
-	int a[]={4,6,2,5,3,5,1};
-	int s=partitionHoareG(a,0,size-1);
-	printf("s-> %d \n", s);
-	for(i=0;i<size;i++){
-		printf("%d ",a[i]);
-	}
-
-}
-
-void testQuickSort(){
-	int i;
-	int size=7; /*Igual a la cantidad de elementos en a*/
-	int a[]={4,6,2,5,3,5,1};
-
-	for(i=0;i<size;i++){
-		printf("%d ",a[i]);
-	}
-
-	quickSortG(a,0,size-1);
-
-	printf("\n");
-	for(i=0;i<size;i++){
-		printf("%d ",a[i]);
+	for (i = 1; i<size; i++) {
+		v = a[i];
+		j = i - 1;
+		while (j >= 0 && a[j]>v) {
+			a[j + 1] = a[j];
+			j = j - 1;
+		}
+		a[j + 1] = v;
 	}
 }
+
 
 /**
- * Implementa QuickSort de acuerdo al particionamiento original de Hoare segun:
- * CORMEN, Thomas H., LEISERSON, Charles E., RIVEST, Ronald L. y STEIN, Clifford.
- * Introduction to Algorithms. 3rd Edition. MIT press, 2009, pp. 185
- */
+* Implements SelectionSort as in:
+* LEVITIN, Anany. Introduction to the Design and Analysis of Algorithms. 3rd Edition. Pearson, 2011.
+*/
+void selectionSort(int a[], int size) {
+	int i, min, j;
+
+	for (i = 0; i<size - 1; i++) {
+		min = i;
+		for (j = i + 1; j<size; j++) {
+			if (a[j]<a[min]) {
+				min = j;
+			}
+		}
+		swap(&a[i], &a[min]);
+	}
+}
+
+
+/**
+* Implements QuickSort using de original Hoare partition as in:
+* CORMEN, Thomas H., LEISERSON, Charles E., RIVEST, Ronald L. y STEIN, Clifford.
+* Introduction to Algorithms. 3rd Edition. MIT press, 2009, pp. 185
+*/
 void quickSort(int a[], int l, int r){
 	int s;
 	if(l<r){
@@ -119,8 +213,9 @@ void quickSort(int a[], int l, int r){
 		quickSort(a,s+1,r);
 	}
 }
+
 /**
- * Implementa version original particionamiento de Hoare segun:
+ * Implements the original Hoare partition as in:
  * CORMEN, Thomas H., LEISERSON, Charles E., RIVEST, Ronald L. y STEIN, Clifford.
  * Introduction to Algorithms. 3rd Edition. MIT press, 2009, pp. 185
  */
@@ -150,9 +245,10 @@ int partitionHoare(int a[], int l, int r){
 }
 
 /**
- * Implementa QuickSort de acuerdo al particionamiento segun:
+ * Implements QuickSort partitioning as in:
  * GOODRICH, Michael T y TAMASSIA, Roberto.
- * Algorithm design and applications. Wiley Publishing, 2014, pp 255
+ * Algorithm design and applications. Wiley Publishing, 2014.
+ * pp. 255
  */
 void quickSortG(int a[], int l, int r){
 	int s;
@@ -162,9 +258,12 @@ void quickSortG(int a[], int l, int r){
 		quickSortG(a,s+1,r);
 	}
 }
+
 /**
- * Implementa particionamiento de Hoare segun:
- * GOODRICH, Michael T y TAMASSIA, Roberto. Algorithm design and applications. Wiley Publishing, 2014.
+ * Implements Hoare paritioning as in:
+ * GOODRICH, Michael T y TAMASSIA, Roberto.
+ * Algorithm design and applications. Wiley Publishing, 2014.
+ * pp. 255
  */
 int partitionHoareG(int a[], int l, int r){
 	int p=a[r];
@@ -189,37 +288,14 @@ int partitionHoareG(int a[], int l, int r){
 }
 
 
-void testQuickSortList(){
-	int i;
-
-	List* list=createList();
-	add(list, 4);
-	add(list, 6);
-	add(list, 2);
-	add(list, 5);
-	add(list, 3);
-	add(list, 5);
-	add(list, 1);
-
-	for(i=0;i<size_list(list);i++){
-		printf("%d ",get(list,i));
-	}
-
-	quickSortGList(list, 0, size_list(list)-1);
-
-	printf("\n");
-	for(i=0;i<size_list(list);i++){
-		printf("%d ",get(list,i));
-	}
-}
-
-
 /**
- * Implementa QuickSort de acuerdo al particionamiento segun:
- * GOODRICH, Michael T y TAMASSIA, Roberto.
- * Algorithm design and applications. Wiley Publishing, 2014, pp 255
- */
-void quickSortGList(List* list, int l, int r){
+* Only for testing purposes... 
+* Implements QuickSort (over a list), partitioning as in:
+* GOODRICH, Michael T y TAMASSIA, Roberto.
+* Algorithm design and applications. Wiley Publishing, 2014.
+* pp. 255
+*/
+void quickSortGList(ll_List* list, int l, int r){
 	int s;
 	if(l<r){
 		s=partitionHoareGList(list,l,r);
@@ -227,20 +303,24 @@ void quickSortGList(List* list, int l, int r){
 		quickSortGList(list,s+1,r);
 	}
 }
+
 /**
- * Implementa particionamiento de Hoare segun:
- * GOODRICH, Michael T y TAMASSIA, Roberto. Algorithm design and applications. Wiley Publishing, 2014.
- */
-int partitionHoareGList(List* list, int l, int r){
-	int p=get(list,r);
+* Only for testing purposes...
+* Implements Hoare partitioning (of a double linked list) as in:
+* GOODRICH, Michael T y TAMASSIA, Roberto.
+* Algorithm design and applications. Wiley Publishing, 2014.
+* pp. 255
+*/
+int partitionHoareGList(ll_List* list, int l, int r){
+	int p=ll_get(list,r);
 	int i=l;
 	int j=r-1;
 
 	while(i<=j){
-		while(i<=j && get(list, i)<=p){
+		while(i<=j && ll_get(list, i)<=p){
 			i++;
 		}
-		while(j>=i && get(list, j)>=p){
+		while(j>=i && ll_get(list, j)>=p){
 			j--;
 		}
 
@@ -253,88 +333,19 @@ int partitionHoareGList(List* list, int l, int r){
 	return i;
 }
 
-void swapList(List* list, int a, int b){
-	int tmp=get(list,a);
-	set(list, get(list, b), a);
-	set(list, tmp, b);
-}
-
 /**
- * Intercambia los valores de los enteros a y b
- */
-void swap(int* a, int* b){
-	int tmp=*a;
-	*a=*b;
-	*b=tmp;
+* Swap two integers a and b
+*/
+void swap(int* a, int* b) {
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-
-void testInsertionSort(){
-	int i;
-	int size=7; /*Igual a la cantidad de elementos en a*/
-	int a[]={4,6,2,5,3,5,1};
-
-	for(i=0;i<size;i++){
-		printf("%d ",a[i]);
-	}
-
-	insertionSort(a,size);
-
-	printf("\n");
-	for(i=0;i<size;i++){
-		printf("%d ",a[i]);
-	}
-}
-/**
- * Implementa InsertionSort segun:
- * LEVITIN, Anany. Introduction to the Design and Analysis of Algorithms. 3rd Edition. Pearson, 2011.
- */
-void insertionSort(int a[], int size){
-	int i, v, j;
-
-	for(i=1;i<size;i++){
-		v=a[i];
-		j=i-1;
-		while(j>=0 && a[j]>v){
-			a[j+1]=a[j];
-			j=j-1;
-		}
-		a[j+1]=v;
-	}
+void swapList(ll_List* list, int a, int b){
+	int tmp=ll_get(list,a);
+	ll_set(list, ll_get(list, b), a);
+	ll_set(list, tmp, b);
 }
 
-
-void testSelectionSort() {
-	int i;
-	int size = 7; /*Igual a la cantidad de elementos en a*/
-	int a[] = { 4,6,2,5,3,5,1 };
-
-	for (i = 0; i<size; i++) {
-		printf("%d ", a[i]);
-	}
-
-	selectionSort(a, size);
-
-	printf("\n");
-	for (i = 0; i<size; i++) {
-		printf("%d ", a[i]);
-	}
-}
-/**
- * Implementa SelectionSort segun:
- * LEVITIN, Anany. Introduction to the Design and Analysis of Algorithms. 3rd Edition. Pearson, 2011.
- */
-void selectionSort(int a[], int size){
-	int i, min, j;
-
-	for(i=0;i<size-1;i++){
-		min=i;
-		for(j=i+1; j<size; j++){
-			if(a[j]<a[min]){
-				min=j;
-			}
-		}
-		swap(&a[i], &a[min]);
-	}
-}
 

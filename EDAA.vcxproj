@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\integer\ADT_HashTable.c" />
+    <ClCompile Include="src\integer\ADT_Queue_Linked.c" />
+    <ClCompile Include="src\integer\ADT_Stack_Linked.c" />
     <ClCompile Include="src\integer\Main.c" />
+    <ClCompile Include="src\integer\ProblemSolutions.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\integer\ADT_HashTable.h" />
+    <ClInclude Include="src\integer\ADT_Queue_Linked.h" />
+    <ClInclude Include="src\integer\ADT_Stack_Linked.h" />
+    <ClInclude Include="src\integer\ProblemSolutions.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

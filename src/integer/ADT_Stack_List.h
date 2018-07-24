@@ -1,6 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT Stack, implementada utilizando una Lista Doblemente Enlazada		 		*
+* ADT Stack, implemented using a list (Double Linked List)				 		*
 * 																				*
 ********************************************************************************/
 
@@ -12,18 +12,18 @@
 #include <stdbool.h>
 #include "ADT_List_DoubleLinked.h"
 
-typedef struct Stack
+typedef struct sll_Stack
 {
-	List* innerList;
-}Stack;
+	ll_List* innerList;
+}sll_Stack;
 
-void testStack();
-Stack* createStack();
-void push(Stack* s, int e);
-int peek(Stack* s);
-int pop(Stack* s);
-void specific_pop(Stack* s, int e);
-int sizeStack(Stack* s);
-bool isEmptyStack(Stack* s);
+void sll_test();
+sll_Stack* sll_create();
+void sll_push(sll_Stack* s, int e);
+int sll_peek(sll_Stack* s);
+int sll_pop(sll_Stack* s);
+void sll_especificPop(sll_Stack* s, int e);
+int sll_size(sll_Stack* s);
+bool sll_isEmpty(sll_Stack* s);
 
 #endif /* ADT_STACK_LIST_H_ */

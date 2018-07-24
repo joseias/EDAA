@@ -1,6 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT Queue, implementada utilizando una Lista Doblemente Enlazada		 		*
+* ADT Queue, implemented using a list (Double Linked List)				 		*
 * 																				*
 ********************************************************************************/
 
@@ -10,17 +10,18 @@
 #include <stdbool.h>
 #include "ADT_List_DoubleLinked.h"
 
-typedef struct Queue
+typedef struct qll_queue
 {
-	List* innerList;
-}Queue;
+	ll_List* innerList;
 
-void testQueue();
-Queue* createQueue();
-void enqueue(Queue* q, int e);
-int front(Queue* q);
-int dequeue(Queue* q);
-int sizeQueue(Queue* q);
-bool isEmptyQueue(Queue* q);
+}qll_Queue;
+
+void qll_test();
+qll_Queue* qll_create();
+void qll_enqueue(qll_Queue* q, int e);
+int qll_front(qll_Queue* q);
+int qll_dequeue(qll_Queue* q);
+int qll_size(qll_Queue* q);
+bool qll_isEmpty(qll_Queue* q);
 
 #endif /* ADT_QUEUE_LIST_H_ */

@@ -1,7 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT Max Heap Binario, implementado utilizando un arreglo y elementos desde la *
-* posicion 0		 															*
+* ADT Max Binary Heap using arrays (elements from 0)							*
 * 																				*
 ********************************************************************************/
 
@@ -11,26 +10,26 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct binaryHeap{
+typedef struct hb_heap{
 	int maxSize;
 	int lastElement;
 	int* elements;
-}BinaryHeap;
+}hb_Heap;
 
-void testHeapify();
-void testBuildHeap();
+void hb_testHeapify();
+void hb_testBuildHeap();
 
-BinaryHeap* createHeap(int maxSize);
-void heapify(BinaryHeap* h, int i);
-BinaryHeap* buildHeap(int* elements, int size);
-void insert(BinaryHeap* h, int element);
-int deleteMax(BinaryHeap* h);
-int searchMax(BinaryHeap* h);
-int size_heap(BinaryHeap* h);
+hb_Heap*hb_create(int maxSize);
+void hb_heapify(hb_Heap*h, int i);
+hb_Heap*hb_build(int* elements, int size);
+void hb_insert(hb_Heap*h, int element);
+int hb_deleteMax(hb_Heap*h);
+int hb_searchMax(hb_Heap*h);
+int hb_size(hb_Heap*h);
 
-void swap(int* a, int* b);
-int leftChild(int nodeIndex);
-int rightChild(int nodeIndex);
-int parent(int nodeIndex);
+void hb_swap(int* a, int* b);
+int hb_leftChild(int nodeIndex);
+int hb_rightChild(int nodeIndex);
+int hb_parent(int nodeIndex);
 
 #endif /* ADT_BINARYHEAP_H_ */

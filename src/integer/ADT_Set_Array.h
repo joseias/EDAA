@@ -1,7 +1,7 @@
 /********************************************************************************
 * 																				*
-* ADT Set , implementacion MUY ineficiente utilizando un arreglo y elementos 	*
-* desde la posicion 0. Solo para ilustrar el concepto de TDA		 			*
+* ADT Set, very inefficient  implementation using arrays. Only to illustrate	*
+* the ADT definition															*
 * 																				*
 ********************************************************************************/
 
@@ -12,20 +12,20 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef struct Set {
+typedef struct seta_set {
 	int size;
 	int maxSize;
 	int resizeFactor;
 	int * elements;
-}Set;
+}seta_Set;
 
-void testSet();
-Set* setCreate();
-bool setContains(Set* s, int element);
-void setAdd(Set* s, int element);
-void setRemove(Set* s, int element);
-Set* setIntersection(Set* a, Set* b);
-Set* setUnion(Set* a, Set* b);
-void setPrint(Set* s);
+void seta_test();
+seta_Set* seta_create();
+bool seta_contains(seta_Set* s, int element);
+void seta_add(seta_Set* s, int element);
+void seta_remove(seta_Set* s, int element);
+seta_Set* seta_intersection(seta_Set* a, seta_Set* b);
+seta_Set* seta_union(seta_Set* a, seta_Set* b);
+void seta_print(seta_Set* s);
 
 #endif /* ADT_SET_ARRAY_H_ */

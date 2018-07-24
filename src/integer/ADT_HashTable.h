@@ -14,8 +14,8 @@
 typedef struct entry{
 	int key;
 	int value;
-	struct entry* next;
 	struct entry* prev;
+	struct entry* next;
 } Entry;
 
 
@@ -25,14 +25,13 @@ typedef struct hashTable{
 	Entry** table;
 }HashTable;
 
-
-HashTable* createHashTable();
-bool containsKey(HashTable* ht, int key);
-int get(HashTable* ht, int key);
-void put(HashTable* ht, int key, int value);
-void remove(HashTable* ht, int key);
+void ht_test();
+HashTable* ht_create();
+bool ht_containsKey(HashTable* ht, int key);
+int ht_get(HashTable* ht, int key);
+void ht_put(HashTable* ht, int key, int value);
+void ht_remove(HashTable* ht, int key);
 
 int hashDiv(int key, int tableSize);
-
 
 #endif /* ADT_HASHTABLE_H_ */

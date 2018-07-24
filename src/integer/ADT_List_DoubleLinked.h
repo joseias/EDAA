@@ -1,6 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT List, implementada como Lista Doblemente Enlazada 						*
+* ADT List, implemented as double linked list									*
 * 																				*
 ********************************************************************************/
 
@@ -11,50 +11,52 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef struct node
+typedef struct ll_node
 {
 	int value;
-	struct node* next;
-	struct node* prev;
-} Node;
+	struct ll_node* next;
+	struct ll_node* prev;
+} ll_Node;
 
 
-typedef struct List
+typedef struct ll_List
 {
 	int size;
-	Node* head;
-	Node* tail;
-}List;
+	ll_Node* head;
+	ll_Node* tail;
+}ll_List;
 
-List* createList();
-int sizeList(List* list);
-void add(List* list, int element);
-void add_at(List* list, int element, unsigned int pos);
-int get(List* list, unsigned int pos);
-void removeAt(List* list, unsigned int pos);
-int indexOf(List* list, int element);
-bool contains(List* list, int element);
-void clear(List* list);
-int set(List *list, int element, unsigned int pos);
+void ll_test();
+ll_List* ll_create();
+int ll_size(ll_List* list);
+void ll_add(ll_List* list, int element);
+void ll_addAt(ll_List* list, int element, unsigned int pos);
+int ll_get(ll_List* list, unsigned int pos);
+void ll_removeAt(ll_List* list, unsigned int pos);
+int ll_indexOf(ll_List* list, int element);
+bool ll_contains(ll_List* list, int element);
+void ll_clear(ll_List* list);
+int ll_set(ll_List *list, int element, unsigned int pos);
 
-/* ADT List, funciones auxiliares pero que no forman parte de la especificacion */
-Node* createNode(int element, Node* next, Node* prev);
-Node* getNodeAt(List* list, int unsigned pos);
-void testLinkedList();
+/* ADT List, auxiliary functions not in the specification... */
+
+ll_Node* ll_createNode(int element, ll_Node* next, ll_Node* prev);
+ll_Node* ll_getNodeAt(ll_List* list, int unsigned pos);
+
 
 
 /********************************************************************************
 * 																				*
-* ADT List, soluciones a problemas guía y evaluaciones...						*
+* ADT List, extra funtions...													*
 * 																				*
 ********************************************************************************/
 
 /* Index of last ocurrence of element in the list. */
-int lastIndexOf(List* list, int element);
+int ll_lastIndexOf(ll_List* list, int element);
 
 /*Recursive list reversal.*/
-List* reverseRec(List* list);
+ll_List* ll_reverseRec(ll_List* list);
 
 /*Removing duplicates just with TDA List operations*/
-void deleteDup(List* list);
+void ll_deleteDup(ll_List* list);
 #endif /* ADT_LIST_DOUBLELINKED_H_ */

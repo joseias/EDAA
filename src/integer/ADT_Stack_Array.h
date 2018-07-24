@@ -1,6 +1,6 @@
 /********************************************************************************
 * 																				*
-* ADT Stack, implementada utilizando un arreglo y tamaño limitado N  	 		*
+* ADT Stack, implemented over an array of limited size N			 	 		*
 * 																				*
 ********************************************************************************/
 
@@ -11,20 +11,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef struct Stack
+typedef struct sa_stack
 {
 	int *elements;
 	int maxSize;
 	int lastIndex;
-}Stack;
 
-void testStack();
-Stack* createStack(int maxSize);
-void push(Stack* s, int e);
-int peek(Stack* s);
-int pop(Stack* s);
-int sizeStack(Stack* s);
-bool isEmptyStack(Stack* s);
+}sa_Stack;
+
+void sa_test();
+sa_Stack* sa_create(int maxSize);
+void sa_push(sa_Stack* s, int e);
+int sa_peek(sa_Stack* s);
+int sa_pop(sa_Stack* s);
+int sa_size(sa_Stack* s);
+bool sa_isEmpty(sa_Stack* s);
 
 
 #endif /* ADT_STACK_ARRAY_H_ */

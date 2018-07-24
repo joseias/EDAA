@@ -1,3 +1,9 @@
+/********************************************************************************
+* 																				*
+* Solution to some class and exam exercises				     				 	*
+* 																				*
+********************************************************************************/
+
 #include "ProblemSolutions.h"
 
 void testBalancing() {
@@ -14,24 +20,25 @@ void testBalancing() {
 		printf("Not balanced");
 	}
 }
+
 bool verifyBalancing(char exp[], int length) {
 
 	int i = 0;
 	char cs, csc;
-	Stack* s = createStack();
+	sl_Stack* s = sl_create();
 
 	for (i = 0; i < length; i++) {
 		cs = exp[i];
 		if (cs == '(' || cs == '[' || cs == '{') {
-			push(s, cs);
+			sl_push(s, cs);
 		}
 
 		if (cs == ')' || cs == ']' || cs == '}') {
-			if (isEmptyStack(s)) {
+			if (sl_isEmpty(s)) {
 				return false;
 			}
 			else {
-				csc = pop(s);
+				csc = sl_pop(s);
 
 				if (cs == ')' && csc != '(') {
 					return false;
@@ -48,7 +55,7 @@ bool verifyBalancing(char exp[], int length) {
 		}
 	}
 
-	return isEmptyStack(s);
+	return sl_isEmpty(s);
 }
 
 /********************************************************************************
@@ -61,66 +68,68 @@ void testPosEval() {
 	int r = posEval(exp, 7);
 	printf("%d", r);
 }
+
 int posEval(char* exp, int size) {
-	Stack* s = createStack();
+	sl_Stack* s = sl_create();
 	int i;
 	int op1, op2;
 	for (i = 0; i < size; i++) {
 		if (isdigit(exp[i])) { /*Is a number*/
-			push(s, exp[i] - '0');
+			sl_push(s, exp[i] - '0');
 		}
 		else {
 			if (exp[i] == '+') {
-				op1 = pop(s);
-				op2 = pop(s);
-				push(s, op2 + op1);
+				op1 = sl_pop(s);
+				op2 = sl_pop(s);
+				sl_push(s, op2 + op1);
 			}
 
 			if (exp[i] == '-') {
-				op1 = pop(s);
-				op2 = pop(s);
-				push(s, op2 - op1);
+				op1 = sl_pop(s);
+				op2 = sl_pop(s);
+				sl_push(s, op2 - op1);
 			}
 
 			if (exp[i] == '*') {
-				op1 = pop(s);
-				op2 = pop(s);
-				push(s, op2*op1);
+				op1 = sl_pop(s);
+				op2 = sl_pop(s);
+				sl_push(s, op2*op1);
 			}
 
 			if (exp[i] == '/') {
-				op1 = pop(s);
-				op2 = pop(s);
-				push(s, op2 / op1);
+				op1 = sl_pop(s);
+				op2 = sl_pop(s);
+				sl_push(s, op2 / op1);
 			}
 		}
 	}
 
-	return pop(s);
+	return sl_pop(s);
 }
 
 void testInvert() {
-	Queue*  q = createQueue();
-	enqueue(q, 1);
-	enqueue(q, 2);
-	enqueue(q, 3);
-	enqueue(q, 4);
+	ql_Queue*  q = ql_create();
+	ql_enqueue(q, 1);
+	ql_enqueue(q, 2);
+	ql_enqueue(q, 3);
+	ql_enqueue(q, 4);
 
-	Queue* iq = invert(q);
+	ql_Queue* iq = invert(q);
 
-	while (!isEmptyQueue(iq)) {
-		printf("%d\n", dequeue(iq));
+	while (!ql_isEmpty(iq)) {
+		printf("%d\n", ql_dequeue(iq));
 	}
 }
-Queue* invert(Queue* q) {
-	Queue* iq = createQueue();
-	Stack* s = createStack();
-	while (!isEmptyQueue(q)) {
-		push(s, dequeue(q));
+
+ql_Queue* invert(ql_Queue* q) {
+	ql_Queue* iq = ql_create();
+	sl_Stack* s = sl_create();
+	while (!ql_isEmpty(q)) {
+		sl_push(s, ql_dequeue(q));
 	}
 
-	while (!isEmptyStack(s)) {
-		enqueue(iq, pop(s));
+	while (!sl_isEmpty(s)) {
+		ql_enqueue(iq, sl_pop(s));
 	}
 
 	return iq;
@@ -150,30 +159,30 @@ bool isPalindromo(char* word, int start, int end) {
 }
 
 void testReverseQueue() {
-	Queue* fila1 = createQueue();
-	enqueue(fila1, 1);
-	enqueue(fila1, 2);
-	enqueue(fila1, 3);
-	enqueue(fila1, 4);
+	ql_Queue* fila1 = ql_create();
+	ql_enqueue(fila1, 1);
+	ql_enqueue(fila1, 2);
+	ql_enqueue(fila1, 3);
+	ql_enqueue(fila1, 4);
 
-	Queue* fila2 = createQueue();
+	ql_Queue* fila2 = ql_create();
 	reverseQueue(fila1, fila2);
 
-	while (!isEmptyQueue(fila2)) {
-		printf("%d \n", dequeue(fila2));
+	while (!ql_isEmpty(fila2)) {
+		printf("%d \n", ql_dequeue(fila2));
 	}
 }
 
-void reverseQueue(Queue* q1, Queue* q2) {
-	if (isEmptyQueue(q2)) {
-		Stack* tmp = createStack();
+void reverseQueue(ql_Queue* q1, ql_Queue* q2) {
+	if (ql_isEmpty(q2)) {
+		sl_Stack* tmp = sl_create();
 
-		while (!isEmptyQueue(q1)) {
-			push(tmp, dequeue(q1));
+		while (!ql_isEmpty(q1)) {
+			sl_push(tmp, ql_dequeue(q1));
 		}
 
-		while (!isEmptyStack(tmp)) {
-			enqueue(q2, pop(tmp));
+		while (!sl_isEmpty(tmp)) {
+			ql_enqueue(q2, sl_pop(tmp));
 		}
 	}
 	else {
@@ -183,18 +192,18 @@ void reverseQueue(Queue* q1, Queue* q2) {
 }
 
 int testSizeStackNoSize() {
-	Stack* s = createStack();
-	push(s, 1);
-	push(s, 2);
-	push(s, 3);
-	push(s, 4);
+	sl_Stack* s = sl_create();
+	sl_push(s, 1);
+	sl_push(s, 2);
+	sl_push(s, 3);
+	sl_push(s, 4);
 
 	int size = sizeStackNoSize(s);
 	printf("%d \n", size);
 }
 
-int sizeStackNoSize(Stack* s) {
-	NodeStack* tmp = s->top;
+int sizeStackNoSize(sl_Stack* s) {
+	sl_Node* tmp = s->top;
 	int size = 0;
 
 	while (tmp != NULL) {
@@ -205,13 +214,13 @@ int sizeStackNoSize(Stack* s) {
 	return size;
 }
 
-
 void testMultArray() {
 	int a[] = { 1,2,3,4 };
 	int size = 4;
-	int result = multArray(&a, size);
+	int result = multArray(a, size);
 	printf("%d \n", result);
 }
+
 int multArray(int* a, int size) {
 	if (size > 0) {
 		if (size == 1) {

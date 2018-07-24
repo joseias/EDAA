@@ -1,9 +1,8 @@
-/*
- * ADT_Stack_TwoQueues.c.h
- *
- *  Created on: Oct 17, 2017
- *      Author: Someone
- */
+/********************************************************************************
+* 																				*
+* ADT Stack, implementaded with two queues (single node queue)      			*
+* 																				*
+********************************************************************************/
 
 #ifndef ADT_STACK_TWOQUEUES_H_
 #define ADT_STACK_TWOQUEUES_H_
@@ -14,19 +13,20 @@
 
 #include "ADT_Queue_Linked.h"
 
-typedef struct stack
+typedef struct sq_stack
 {
-	Queue* in;
-	Queue* out;
-}Stack;
+	ql_Queue* in;
+	ql_Queue* out;
 
-void testStack();
-Stack* createStack();
-void push(Stack* s, int e);
-int peek(Stack* s);
-int pop(Stack* s);
-int sizeStack(Stack* s);
-bool isEmptyStack(Stack* s);
+}sq_Stack;
+
+void sq_test();
+sq_Stack* sq_create();
+void sq_push(sq_Stack* s, int e);
+int sq_peek(sq_Stack* s);
+int sq_pop(sq_Stack* s);
+int sq_size(sq_Stack* s);
+bool sq_isEmpty(sq_Stack* s);
 
 
 #endif /* ADT_STACK_TWOQUEUES_H_ */

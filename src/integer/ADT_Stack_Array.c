@@ -1,25 +1,26 @@
 /********************************************************************************
 * 																				*
-* ADT Stack, implementada utilizando un arreglo y tamaño limitado N  	 		*
+* ADT Stack, implemented over an array of limited size N			 	 		*
 * 																				*
 ********************************************************************************/
+
 #include "ADT_Stack_Array.h"
 
-void testStack(){
-	Stack* s=createStack(3);
-	push(s, 1);
-	push(s, 2);
-	push(s, 3);
+void sa_test(){
+	sa_Stack* s=sa_create(3);
+	sa_push(s, 1);
+	sa_push(s, 2);
+	sa_push(s, 3);
 
-	printf("Peek -> %d \n", peek(s));
+	printf("Peek -> %d \n", sa_peek(s));
 
-	while(!isEmptyStack(s)){
-		printf("Pop -> %d \n", pop(s));
+	while(!sa_isEmpty(s)){
+		printf("Pop -> %d \n", sa_pop(s));
 	}
 }
 
-Stack* createStack(int maxSize){
-	Stack* s=(Stack*) malloc(sizeof(Stack));
+sa_Stack* sa_create(int maxSize){
+	sa_Stack* s=(sa_Stack*) malloc(sizeof(sa_Stack));
 
 	int* elements=(int*) malloc(sizeof(int)*maxSize);
 	s->elements=elements;
@@ -29,7 +30,7 @@ Stack* createStack(int maxSize){
 	return s;
 }
 
-void push(Stack* s, int e){
+void sa_push(sa_Stack* s, int e){
 	if(s->lastIndex < s->maxSize-1){
 		s->lastIndex++;
 		s->elements[s->lastIndex]=e;
@@ -40,7 +41,7 @@ void push(Stack* s, int e){
 	}
 }
 
-int peek(Stack* s){
+int sa_peek(sa_Stack* s){
 	if(s->lastIndex >= 0){
 		return s->elements[s->lastIndex];
 	}
@@ -51,7 +52,7 @@ int peek(Stack* s){
 }
 
 
-int pop(Stack* s){
+int sa_pop(sa_Stack* s){
 	int e;
 	if(s->lastIndex >= 0){
 		e=s->elements[s->lastIndex];
@@ -64,9 +65,9 @@ int pop(Stack* s){
 	}
 }
 
-int sizeStack(Stack* s){
+int sa_size(sa_Stack* s){
 	return s->lastIndex+1;
 }
-bool isEmptyStack(Stack* s){
+bool sa_isEmpty(sa_Stack* s){
 	return !(s->lastIndex >= 0);
 }

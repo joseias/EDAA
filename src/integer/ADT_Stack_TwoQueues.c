@@ -1,55 +1,62 @@
+/********************************************************************************
+* 																				*
+* ADT Stack, implementaded with two queues (single node queue)      			*
+* 																				*
+********************************************************************************/
+
 #include "ADT_Stack_TwoQueues.h"
 
-void testStack(){
-	Stack* s=createStack(3);
-	push(s, 1);
-	push(s, 2);
-	push(s, 3);
+void sq_test(){
+	sq_Stack* s=sq_create(3);
+	sq_push(s, 1);
+	sq_push(s, 2);
+	sq_push(s, 3);
 
-	printf("Peek -> %d \n", peek(s));
+	printf("Peek -> %d \n", sq_peek(s));
 
-	while(!isEmptyStack(s)){
-		printf("Pop -> %d \n", pop(s));
+	while(!sq_isEmpty(s)){
+		printf("Pop -> %d \n", sq_pop(s));
 	}
 }
 
-Stack* createStack(){
-	Stack* s=(Stack*)malloc(sizeof(Stack));
-	s->in=createQueue();
-	s->out=createQueue();
+sq_Stack* sq_create(){
+	sq_Stack* s=(sq_Stack*)malloc(sizeof(sq_Stack));
+	s->in=ql_create();
+	s->out= ql_create();
 	return s;
 }
 
-void push(Stack* s, int e){
-	enqueue(s->in,e);
+void sq_push(sq_Stack* s, int e){
+	ql_enqueue(s->in,e);
 }
 
-int peek(Stack* s){
-	while(sizeQueue(s->in) > 1){
-		enqueue(s->out, dequeue(s->in));
+int sq_peek(sq_Stack* s){
+	while(ql_size(s->in) > 1){
+		ql_enqueue(s->out, ql_dequeue(s->in));
 	}
-	int e = dequeue(s->in);
-	enqueue(s->out,e);
+	int e = ql_dequeue(s->in);
+	ql_enqueue(s->out,e);
 
-	Stack* tmp=s->in;
+	ql_Queue* tmp=s->in;
 	s->in=s->out;
 	s->out=tmp;
 	return e;
 }
-int pop(Stack* s){
-	while(sizeQueue(s->in) > 1){
-		enqueue(s->out, dequeue(s->in));
-	}
-	int e = dequeue(s->in);
 
-	Stack* tmp=s->in;
+int sq_pop(sq_Stack* s){
+	while(ql_size(s->in) > 1){
+		ql_enqueue(s->out, ql_dequeue(s->in));
+	}
+	int e = ql_dequeue(s->in);
+
+	ql_Queue* tmp=s->in;
 	s->in=s->out;
 	s->out=tmp;
 	return e;
 }
-int sizeStack(Stack* s){
-	return sizeQueue(s->in) + sizeQueue(s->out); /*s->out deberia estar vacio*/
+int sq_size(sq_Stack* s){
+	return ql_size(s->in) + ql_size(s->out); /*s->out deberia estar vacio*/
 }
-bool isEmptyStack(Stack* s){
-	return sizeStack(s) <= 0;
+bool sq_isEmpty(sq_Stack* s){
+	return sq_size(s) <= 0;
 }

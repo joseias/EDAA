@@ -7,7 +7,12 @@
 
 #include "ADT_List_DoubleLinked.h"
 
-void testLinkedList() {
+void main() {
+	testLinkedList();
+}
+
+
+void ll_testList() {
 	int i, index;
 	Point* element;
 
@@ -70,7 +75,7 @@ void testLinkedList() {
 }
 
 
-List* createList(int(*comparator)(const void *, const void *), void(*destroyer)(const void*)) {
+List* ll_createList(int(*comparator)(const void *, const void *), void(*destroyer)(const void*)) {
 	List* list = (List*)malloc(sizeof(List));
 	list->size = 0;
 	list->head = NULL;
@@ -80,15 +85,15 @@ List* createList(int(*comparator)(const void *, const void *), void(*destroyer)(
 	return list;
 }
 
-int size_list(List* list) {
+int ll_size(List* list) {
 	return list->size;
 }
 
-void add(List* list, void* element) {
-	add_at(list, element, list->size);
+void ll_add(List* list, void* element) {
+	ll_addAt(list, element, list->size);
 }
 
-void add_at(List* list, void* element, unsigned int pos) {
+void ll_addAt(List* list, void* element, unsigned int pos) {
 	Node* nn;
 	Node* cn;
 	Node* tmpl;
@@ -100,8 +105,8 @@ void add_at(List* list, void* element, unsigned int pos) {
 			list->head = nn;
 			list->tail = nn;
 		}
-		else {								/* The list is not empty*/
-			if (pos == list->size) { 		/* If pos points to the list end*/
+		else {								/* The list is not empty */
+			if (pos == list->size) { 		/* If pos points to the list end */
 				tmpl = list->tail;
 				tmpl->next = nn;
 				nn->prev = tmpl;
@@ -132,12 +137,12 @@ void add_at(List* list, void* element, unsigned int pos) {
 
 }
 
-void* get(List* list, unsigned int pos) {
+void* ll_get(List* list, unsigned int pos) {
 	Node* n = getNodeAt(list, pos);
 	return n->data;
 }
 
-void remove_at(List* list, unsigned int pos) {
+void ll_removeAt(List* list, unsigned int pos) {
 	Node* cn;
 	Node* cnn;
 	Node* cnp;
@@ -175,7 +180,7 @@ void remove_at(List* list, unsigned int pos) {
 	}
 }
 
-int indexOf(List* list, void* element) {
+int ll_indexOf(List* list, void* element) {
 	int index = 0;
 	Node* tmp = list->head;
 
@@ -189,23 +194,24 @@ int indexOf(List* list, void* element) {
 	return -1;
 }
 
-bool contains(List* list, void* element) {
+bool ll_contains(List* list, void* element) {
 	return indexOf(list, element) != -1;
 }
-void clear(List* list) {
+
+void ll_clear(List* list) {
 	while (list->size>0) {
 		remove_at(list, list->size - 1);
 	}
 }
 
-void* set(List *list, void* element, unsigned int pos) {
+void* ll_set(List *list, void* element, unsigned int pos) {
 	Node* n = getNodeAt(list, pos);
 	int oldValue = n->data;
 	n->data = element;
 	return oldValue;
 }
 
-Node* createNode(void* element, Node* next, Node* prev) {
+Node* ll_createNode(void* element, Node* next, Node* prev) {
 	Node* nn = (Node*)malloc(sizeof(Node));
 	nn->data = element;
 	nn->next = next;
@@ -213,7 +219,7 @@ Node* createNode(void* element, Node* next, Node* prev) {
 
 	return nn;
 }
-Node* getNodeAt(List* list, unsigned int pos) {
+Node* ll_getNodeAt(List* list, unsigned int pos) {
 	Node* tmp;
 	int i;
 	if (pos >= 0 && pos < list->size) {

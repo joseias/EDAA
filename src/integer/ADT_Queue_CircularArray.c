@@ -1,30 +1,30 @@
 /********************************************************************************
 * 																				*
-* ADT Queue, implementada utilizando un arreglo circular                		*
+* ADT Queue, implemented as a circular array				               		*
 * 																				*
 ********************************************************************************/
 #include "ADT_Queue_CircularArray.h"
 
-void testQueue(){
-	Queue *q=createQueue(3);
-	enqueue(q,1);
-	enqueue(q,2);
-	enqueue(q,3);
+void qca_test(){
+	qca_Queue *q= qca_create(3);
+	qca_enqueue(q,1);
+	qca_enqueue(q,2);
+	qca_enqueue(q,3);
 
-	printf("Dequeued- > %d\n", dequeue(q));
-	printf("Dequeued- > %d\n", dequeue(q));
+	printf("Dequeued- > %d\n", qca_dequeue(q));
+	printf("Dequeued- > %d\n", qca_dequeue(q));
 
-	enqueue(q,4);
-	enqueue(q,5);
+	qca_enqueue(q,4);
+	qca_enqueue(q,5);
 
 	int e;
-	while(!isEmptyQueue(q)){
-		e=dequeue(q);
+	while(!qca_isEmpty(q)){
+		e= qca_dequeue(q);
 		printf("%d\n",e);
 	}
 }
-Queue* createQueue(int maxSize){
-	Queue* q=(Queue*)malloc(sizeof(Queue));
+qca_Queue* qca_create(int maxSize){
+	qca_Queue* q=(qca_Queue*)malloc(sizeof(qca_Queue));
 	q->maxSize=maxSize+1;
 	q->front=0;
 	q->rear=0;
@@ -33,7 +33,7 @@ Queue* createQueue(int maxSize){
 	return q;
 }
 
-void enqueue(Queue* q, int e){
+void qca_enqueue(qca_Queue* q, int e){
 	if((q->maxSize - q->front + q->rear) % q->maxSize == q->maxSize -1 ){
 		fprintf(stderr, "Queue is full...");
 		exit(EXIT_FAILURE);
@@ -44,7 +44,7 @@ void enqueue(Queue* q, int e){
 	}
 }
 
-int dequeue(Queue* q){
+int qca_dequeue(qca_Queue* q){
 	if(q->front ==  q->rear){
 		fprintf(stderr, "Queue is empty...");
 		exit(EXIT_FAILURE);
@@ -56,9 +56,9 @@ int dequeue(Queue* q){
 		return e;
 	}
 }
-int sizeQueue(Queue* q){
+int qca_size(qca_Queue* q){
 	return ((q->maxSize - q->front + q->rear) % q->maxSize);
 }
-bool isEmptyQueue(Queue* q){
-	return !(sizeQueue(q)>0);
+bool qca_isEmpty(qca_Queue* q){
+	return !(qca_size(q)>0);
 }

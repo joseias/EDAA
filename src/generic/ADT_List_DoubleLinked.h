@@ -14,14 +14,14 @@
 #include "Comparators.h"
 #include "Destructors.h"
 
-typedef struct node {
+typedef struct ll_node {
 	void* data;
 	struct node* next;
 	struct node* prev;
 } Node;
 
 
-typedef struct List {
+typedef struct ll_List {
 	int size;
 	Node* head;
 	Node* tail;
@@ -30,6 +30,7 @@ typedef struct List {
 	void(*destroyer)(const void*); /* Pointer to a function used to propertly free the data in the list, could be NULL */
 }List;
 
+void testLinkedList();
 List* createList(int(*comparator)(const void *, const void *), void(*destroyer)(const void*));
 int size_list(List* list);
 void add(List* list, void* element);
@@ -44,6 +45,6 @@ void* set(List *list, void* element, unsigned int pos);
 /* ADT List, auxiliary functions not in the specification... */
 Node* createNode(void* element, Node* next, Node* prev);
 Node* getNodeAt(List* list, unsigned int pos);
-void testLinkedList();
+
 
 #endif /* ADT_LIST_DOUBLELINKED_H_ */

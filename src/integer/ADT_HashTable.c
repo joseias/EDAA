@@ -1,12 +1,45 @@
 /********************************************************************************
-* 																				*
-* ADT HashTable, implementada con buckets de nodos enlazados					*
+*																				*
+* Simple ADT HasthTable with integers key and values. Collisions by chainning   *
 * 																				*
 ********************************************************************************/
 
 #include "ADT_HashTable.h"
+void ht_test() {
 
-HashTable* createHashTable(){
+	HashTable* ht = ht_create();
+	ht_put(ht, 2002, 2);
+	ht_put(ht, 2012, 12);
+	ht_put(ht, 2014, 14);
+	ht_put(ht, 2015, 15);
+
+	int key;
+	for (key = 2000; key <= 2015; ++key) {
+		if (ht_containsKey(ht, key)) {
+			printf("Key %d found, value -> %d \n", key, ht_get(ht, key));
+		}
+		else {
+			printf("Key %d not found... \n", key);
+		}
+	}
+
+	key = 2002;
+	printf("\nRemoving key %d ...\n\n", key);
+	if (ht_containsKey(ht, key)) {
+		ht_remove(ht, key);
+	}
+
+	for (key = 2000; key <= 2015; ++key) {
+		if (ht_containsKey(ht, key)) {
+			printf("Key %d found, value -> %d \n", key, ht_get(ht, key));
+		}
+		else {
+			printf("Key %d not found... \n", key);
+		}
+	}
+}
+
+HashTable* ht_create(){
 
 	HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
 	ht->size = 0;
@@ -22,7 +55,7 @@ HashTable* createHashTable(){
 	return ht;
 }
 
-bool containsKey(HashTable* ht, int key) {
+bool ht_containsKey(HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
 	Entry* entry = ht->table[index];
 
@@ -30,79 +63,104 @@ bool containsKey(HashTable* ht, int key) {
 		if (entry->key == key) {
 			return true;
 		}
+		else {
+			entry = entry->next;
+		}
 	}
 
 	return false;
 }
 
-int get(HashTable* ht, int key) {
+int ht_get(HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
 	Entry* entry = ht->table[index];
+	bool found = false;
 
-	while (entry != NULL) {
+	while (entry != NULL && !found) {
 		if (entry->key == key) {
-			return entry->value;
+			found = true;
 		}
 		else {
 			entry = entry->next;
 		}
 	}
 
-	return NULL;
+	if (found) {
+		return entry->value;
+	}
+	else {
+		fprintf(stderr, "Key %d not found ...\n", key);
+		exit(EXIT_FAILURE);
+	}
 }
 
-void put(HashTable* ht, int key, int value) {
+void ht_put(HashTable* ht, int key, int value) {
 	int index = hashDiv(key, ht->tableSize);
 	Entry* entry = ht->table[index];
 	int oldValue;
-	
-	while(entry != NULL){
-		
+	bool found = false;
+
+	while (entry!= NULL && !found) {
 		/* Checks if the key is already in the hashtable*/
 		if (entry->key == key) {
 			oldValue = value;
 			entry->value = value;
+			found = true;
 		}
 		entry = entry->next;
 	}
-	
-	Entry* en = (Entry*)malloc(sizeof(Entry));
-	en->key = key;
-	en->value = value;
 
-	/* Updating pointers to put the new <key, value> as first entry in the bucket...*/
-	en->prev = NULL;
-	en->next = ht->table[index];
-	ht->table[index]->prev = en;
 
-	ht->table[index] = en; 
-	ht->size++;
+	if (!found) {
+		Entry* en = (Entry*)malloc(sizeof(Entry));
+		en->key = key;
+		en->value = value;
+
+		/* Updating pointers to put the new <key, value> as first entry in the bucket...*/
+		en->prev = NULL;
+		en->next = ht->table[index];
+
+		if (ht->table[index] == NULL) { /*First element in the bucket...*/
+			ht->table[index] = en;
+		}
+		else {
+			ht->table[index]->prev = en;
+			ht->table[index] = en;
+		}
+		
+		ht->size++;
+	}
 }
 
-void remove(HashTable* ht, int key) {
+void ht_remove(HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
 	Entry* entry = ht->table[index];
+	bool found = false;
 
-	while (entry != NULL) {
+	while (entry != NULL && !found) {
 		if (entry->key == key) {
-			/* Updating pointers to remove the entry...*/
-			if (entry->next != NULL) {
-				entry->next->prev = entry->prev;
-			}
+			found = true;
 
-			if (entry->prev != NULL) {
-				entry->prev->next = entry->next;
+			if (entry->next == NULL && entry->prev == NULL) { /*The only entry in the bucket*/
+				ht->table[index] = NULL;
 			}
+			else {
+				/* Updating pointers to remove the entry...*/
+				if (entry->next != NULL) {
+					entry->next->prev = entry->prev;
+				}
 
+				if (entry->prev != NULL) {
+					entry->prev->next = entry->next;
+				}
+			}
 			free(entry);
-			entry = NULL;
+			ht->size--;
 		}
 		else {
 			entry = entry->next;
 		}
 	}
-
-	ht->size--;
 }
 
 

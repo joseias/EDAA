@@ -1,42 +1,45 @@
 /********************************************************************************
 * 																				*
-* ADT Stack, implementada utilizando una Lista Doblemente Enlazada		 		*
+* ADT Stack, implemented using a list (Double Linked List)				 		*
 * 																				*
 ********************************************************************************/
 
 #include "ADT_Stack_List.h"
 
-void testStack(){
-	Stack* s=createStack();
-	push(s, 1);
-	push(s, 2);
-	push(s, 3);
-	push(s, 2);
-	push(s, 4);
-	push(s, 2);
-	push(s, 5);
+void sll_test(){
+	sll_Stack* s = sll_create();
+	sll_push(s, 1);
+	sll_push(s, 2);
+	sll_push(s, 3);
+	sll_push(s, 2);
+	sll_push(s, 4);
+	sll_push(s, 2);
+	sll_push(s, 5);
 
-	printf("Peek -> %d \n", peek(s));
+	printf("Peek -> %d \n", sll_peek(s));
 
-	specific_pop(s, 2);
+	sll_especificPop(s, 2);
 
-	while(!isEmptyStack(s)){
-		printf("Pop -> %d \n", pop(s));
+	while(!sll_isEmpty(s)){
+		printf("Pop -> %d \n", sll_pop(s));
 	}
 }
-Stack* createStack(){
-	List* innL=createList();
-	Stack* s=(Stack*) malloc(sizeof(Stack));
+
+sll_Stack* sll_create(){
+	ll_List* innL=ll_create();
+	sll_Stack* s=(sll_Stack*) malloc(sizeof(sll_Stack));
 	s->innerList=innL;
 	return s;
 }
-void push(Stack* s, int e){
-	add(s->innerList, e);
+
+void sll_push(sll_Stack* s, int e){
+	ll_add(s->innerList, e);
 }
-int peek(Stack* s){
-	if(!isEmptyStack(s)){
-		int last = sizeList(s->innerList) - 1;
-		return get(s->innerList, last);
+
+int sll_peek(sll_Stack* s){
+	if(!sll_isEmpty(s)){
+		int last = ll_size(s->innerList) - 1;
+		return ll_get(s->innerList, last);
 	}
 	else{
 		fprintf(stderr, "Stack is empty...");
@@ -44,11 +47,11 @@ int peek(Stack* s){
 	}
 }
 
-int pop(Stack* s){
-	if(!isEmptyStack(s)){
-		int last = sizeList(s->innerList) - 1;
-		int e = get(s->innerList, last);
-		removeAt(s->innerList,last);
+int sll_pop(sll_Stack* s){
+	if(!sll_isEmpty(s)){
+		int last = ll_size(s->innerList) - 1;
+		int e = ll_get(s->innerList, last);
+		ll_removeAt(s->innerList,last);
 		return e;
 	}
 	else{
@@ -57,25 +60,25 @@ int pop(Stack* s){
 	}
 }
 
-void specific_pop(Stack* s, int e){
-	Stack* aux = createStack();
+void sll_especificPop(sll_Stack* s, int e){
+	sll_Stack* aux = sll_create();
 	int tmp;
-	while(!isEmptyStack(s)){
-		tmp = pop(s);
+	while(!sll_isEmpty(s)){
+		tmp = sll_pop(s);
 		if(tmp != e){
-			push(aux, tmp);
+			sll_push(aux, tmp);
 		}
 	}
 
-	while(!isEmptyStack(aux)){
-		push(s, pop(aux));
+	while(!sll_isEmpty(aux)){
+		sll_push(s, sll_pop(aux));
 	}
 }
 
-int sizeStack(Stack* s){
-	return sizeList(s->innerList);
+int sll_size(sll_Stack* s){
+	return ll_size(s->innerList);
 }
 
-bool isEmptyStack (Stack* s){
-	return sizeStack(s) <= 0;
+bool sll_isEmpty (sll_Stack* s){
+	return sll_size(s) <= 0;
 }

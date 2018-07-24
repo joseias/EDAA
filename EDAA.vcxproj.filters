@@ -18,12 +18,24 @@
     <ClCompile Include="src\integer\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\integer\ADT_HashTable.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\integer\ProblemSolutions.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Queue_Linked.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Stack_Linked.c">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\integer\ADT_HashTable.h">
+    <ClInclude Include="src\integer\ProblemSolutions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Queue_Linked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Stack_Linked.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

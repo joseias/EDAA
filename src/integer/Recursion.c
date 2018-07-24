@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "Recursion.h"
 
-// Numeros de Wirth
+/* Wirth numbers */
 void testWirth(){
 	int n=43;
 
@@ -15,6 +15,7 @@ void testWirth(){
 		printf("%d no es Wirth\n",n);
 	}
 }
+
 bool isWirth(int n){
     int m;
     if(n<1){
@@ -41,7 +42,7 @@ bool isWirth(int n){
     }
 }
 
-// Torres de Hanoi
+/* Hanoi Towers */
 void testHanoiTowers(){
 	int step=1;
     hanoiTowers(4,"Izquierda", "Centro", "Derecha", &step);
@@ -59,16 +60,18 @@ void hanoiTowers(int cantDisc, char *origen, char* aux, char* destino, int* step
 	 }
 }
 
-// Paridad de un numero. Joyanes 4.1 pp 62
+
+/* Number parity, 4.1 pp 62, JOYANES, et al. Estructura de datos en C. McGraw-Hill,, 2007. */
 void testParity(){
 	 int value=876;
 	 if(isEven(value)){
-		 printf("Es par");
+		 printf("Is even");
 	 }
 	 else{
-		 printf("Es impar");
+		 printf("Is odd");
 	 }
 }
+
 int isOdd(int n){
 	if(n==0){
 		return 0;
@@ -77,6 +80,7 @@ int isOdd(int n){
 		return isEven(n-1);
 	}
 }
+
 int isEven(int n){
 	if(n==0){
 		return 1;
@@ -86,7 +90,7 @@ int isEven(int n){
 	}
 }
 
-// Tour del Caballo de Ajedrez Joyanes 4.3 pp 64
+/* Chess knight tour, 4.3 pp 64, JOYANES, et al. Estructura de datos en C. McGraw-Hill,, 2007. */
 void testKnightTour(){
 	int f, c, sizeX, sizeY, startX, startY;
 	sizeX=5;
@@ -119,6 +123,7 @@ void testKnightTour(){
 		printf("No solution for %d %d board and start in %d %d\n", sizeX, sizeY, startX, startY);
 	}
 }
+
 bool findKnightTour(int startX, int startY, int step, int sizeX, int sizeY,  int** board){
 	bool solutionFound=false;
 	int possibleMoves=8;
@@ -148,14 +153,15 @@ bool findKnightTour(int startX, int startY, int step, int sizeX, int sizeY,  int
 	return solutionFound;
 }
 
-// N-Reinas Joyanes 4.4 pp 74
+/* N-Queens, 4.4 pp 74,  JOYANES, et al. Estructura de datos en C. McGraw-Hill,, 2007. */
 void testNQueens(){
 	int i;
 	int bsize=6;
-	int queens[bsize];
-	bool columns[bsize];
-	bool lrdiags[2*bsize];
-	bool rldiags[2*bsize];
+	int* queens = (int*) malloc(sizeof(int) * bsize);
+
+	bool* columns = (bool*) malloc(sizeof(bool) * 2 * bsize);
+	bool* lrdiags = (bool*)malloc(sizeof(bool) * 2 * bsize);
+	bool* rldiags = (bool*)malloc(sizeof(bool) * 2 * bsize);
 
 	for(i=0;i<bsize;i++){
 		queens[i]=-1;
@@ -178,6 +184,7 @@ void testNQueens(){
 		printf("Solucion no encontrada para las N-Reinas en tablero de %d x %d \n", bsize, bsize);
 	}
 }
+
 bool nQueens(int currentQueen, int bsize, int queens[], bool columns[], bool lrdiags[], bool rldiags[]){
 	int c=0;
 	bool solutionFound=false;
@@ -199,9 +206,11 @@ bool nQueens(int currentQueen, int bsize, int queens[], bool columns[], bool lrd
 
 	return solutionFound;
 }
+
 bool isValid(int f, int c, int bsize, int queens[], bool columns[], bool lrdiags[], bool rldiags[]){
 	return columns[c] && lrdiags[f-c+bsize] && rldiags[f+c-1] ;
 }
+
 void check(int f, int c, int bsize, int queens[], bool columns[], bool lrdiags[], bool rldiags[]){
 	queens[f]=c;
 	columns[c]=false;
@@ -209,6 +218,7 @@ void check(int f, int c, int bsize, int queens[], bool columns[], bool lrdiags[]
 	rldiags[f+c-1]=false;
 
 }
+
 void unCheck (int f, int c, int bsize, int queens[], bool columns[], bool lrdiags[], bool rldiags[]){
 	queens[f]=-1;
 	columns[c]=true;
@@ -216,14 +226,14 @@ void unCheck (int f, int c, int bsize, int queens[], bool columns[], bool lrdiag
 	rldiags[f+c-1]=true;
 }
 
-//Numeros Polidivisibles Joyanes 4.8 pp 74
+/* Polidivisible Numbers, 4.8 pp 74, JOYANES, et al. Estructura de datos en C. McGraw-Hill,, 2007. */
 void testPoliDivNumbers(){
 	int i,size,m;
 	size=9;
 	m=4;
 
-	bool used[size+1];
-	int digits[size+1];
+	bool* used = (bool*)malloc(sizeof(bool) * (size+1));
+	int* digits = (int*)malloc(sizeof(int) * (size + 1));
 
 	for(i=0;i<=size;i++){
 		digits[i]=0;
@@ -232,11 +242,12 @@ void testPoliDivNumbers(){
 
 	poliDivNumbers(digits, size, m, 1, used);
 }
+
 void poliDivNumbers(int digits[], int size,int m,int cpos,bool used[]){
 	int i,cdi;
 
 	if(cpos == m+1){
-		/*Imprimir numero*/
+		/*Print the number*/
 		for(i=1;i<=m;i++){
 			printf("%d", digits[i]);
 		}
@@ -253,6 +264,7 @@ void poliDivNumbers(int digits[], int size,int m,int cpos,bool used[]){
 		}
 	}
 }
+
 bool divisible(int digits[], int size, int divisor){
 	int i,sum;
 	switch(divisor){
@@ -285,21 +297,23 @@ bool divisible(int digits[], int size, int divisor){
 	}
 }
 
-// Variaciones Joyanes 4.12 pp 74
+/*  Variations,  4.12 pp 74, JOYANES, et al. Estructura de datos en C. McGraw-Hill,, 2007. */
 void testVariations(){
 	int n=10;
 	int m=4;
 	int i;
 	char elements[]={'a','b','c','d','e','f','g','h','i','j'};
 
-	/* Misma longitud que 'elements', indica si un elemento ha sido utilizado*/
-	bool disp[n];
+	/* Same length of 'elements', flags if a numbers has been used...*/
+	bool* disp = (bool*) malloc(sizeof(bool) * n);
 
-	/* Contiene los 'indices de los elementos en la variacion actual, ej:
-	 * variation={4, 2, 0, 5} representa la variacion 'e c a f'*/
-	int variation[m];
 
-	/*Inicializacion de arreglos auxiliares */
+	/* Contains the indices of elements in the current variation, ex: 
+	*  variation={4, 2, 0, 5} represents 'e c a f'
+	*/
+	int* variation = (int*) malloc(sizeof(int) * m);
+
+	/* Aux arrays initialization */
 	for(i=0;i<n;i++){ disp[i]=true; }
 	for(i=0;i<m;i++){ variation[i]=-1; }
 
@@ -308,7 +322,7 @@ void testVariations(){
 }
 void generateVariations(int n, int m, int currentPos,char elements[], bool disp[], int variation[]){
 	int i;
-	if(m==0){ /*Imprimir la variacion*/
+	if(m==0){ /*Print the variation */
 		for(i=0;i<currentPos;i++){
 			printf("%c", elements[variation[i]]);
 		}
@@ -316,7 +330,7 @@ void generateVariations(int n, int m, int currentPos,char elements[], bool disp[
 	}
 	else{
 		for(i=0;i<n; i++){
-			if(disp[i]==true){ /*Elemento no incluido en la variacion*/
+			if(disp[i]==true){ /* Element not in the current variation */
 				disp[i]=false;
 				variation[currentPos]=i;
 				generateVariations(n,m-1,currentPos+1,elements,disp,variation);
@@ -328,43 +342,43 @@ void generateVariations(int n, int m, int currentPos,char elements[], bool disp[
 }
 
 
-void testArraySum(){
-	int size=10000;
-	long long start, end;
-	long long sumHead, sumTail;
+//void testArraySum(){
+//	int size=10000;
+//	long long start, end;
+//	long long sumHead, sumTail;
+//
+//	int *a=(int*) malloc(size*sizeof(int));
+//
+//	int i;
+//	for(i=0;i<size;i++){
+//		a[i]=rand() % 20;
+//	}
+//
+//
+//	struct timeval tp;
+//	struct timezone tz;
+//
+//
+//	gettimeofday(&tp, &tz);
+//	start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+//
+//	sumHead=arraySumHead(a,size,0);
+//
+//	gettimeofday(&tp, &tz);
+//	end = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+//	printf("%d %llu\n",sumHead, (end-start));
+//
+//	gettimeofday(&tp, &tz);
+//	start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+//
+//	sumTail=arraySumTail(a,size,0, 0);
+//
+//	gettimeofday(&tp, &tz);
+//	end = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+//	printf("%d %llu\n",sumTail, (end-start));
+//
+//}
 
-//	int a[]={1,2,3,4,5};
-	int *a=(int*) malloc(size*sizeof(int));
-
-	int i;
-	for(i=0;i<size;i++){
-		a[i]=rand() % 20;
-	}
-
-
-	struct timeval tp;
-	struct timezone tz;
-
-
-	gettimeofday(&tp, &tz);
-	start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-
-	sumHead=arraySumHead(a,size,0);
-
-	gettimeofday(&tp, &tz);
-	end = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	printf("%d %llu\n",sumHead, (end-start));
-
-	gettimeofday(&tp, &tz);
-	start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-
-	sumTail=arraySumTail(a,size,0, 0);
-
-	gettimeofday(&tp, &tz);
-	end = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	printf("%d %llu\n",sumTail, (end-start));
-
-}
 long long arraySumHead(int a[],int size, int pos){
 	if(pos==size-1){
 		return a[pos];
@@ -383,7 +397,7 @@ long long arraySumTail(int a[],int size, int pos, long long sum){
 
 void testArrayMin(){
 	int i, m;
-	int size=7; /*Igual a la cantidad de elementos en a*/
+	int size=7;					/*Elements in a*/
 	int a[]={4,6,2,5,3,5,1};
 
 	for(i=0;i<size;i++){
@@ -401,10 +415,10 @@ int arrayMin(int a[], int pos){
 		return a[0];
 	}
 	else{
-		return min(a[pos], arrayMin(a, pos-1));
+		return minInt(a[pos], arrayMin(a, pos-1));
 	}
 }
 
-int min(int a, int b){
+int minInt(int a, int b){
 	return a<b? a:b;
 }

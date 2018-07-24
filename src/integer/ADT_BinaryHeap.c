@@ -1,75 +1,77 @@
 /********************************************************************************
 * 																				*
-* ADT Max Heap Binario, implementado utilizando un arreglo y elementos desde la *
-* posicion 0		 															*
+* ADT Max Binary Heap using arrays (elements from 0)							*
 * 																				*
 ********************************************************************************/
+
 #include "ADT_BinaryHeap.h"
 
-void testHeapify(){
+void hb_testHeapify(){
 	int maxSize = 10;
 	int lastElement = 2;
 	int e[] = {1,2,3};
 	int i;
 
-	BinaryHeap* h = createHeap(maxSize);
+	hb_Heap*h = hb_create(maxSize);
 	h->elements = e;
 	h->lastElement = lastElement;
 
-	heapify(h,1);
+	hb_heapify(h,0);
 
 	for(i=0;i<=h->lastElement;i++){
 		printf("%d ",h->elements[i]);
 	}
+	printf("\n");
 }
 
-void testBuildHeap(){
+void hb_testBuildHeap(){
 	int size = 5;
 	int e[] = {1,2,3,4,5};
 	int i;
 
-	BinaryHeap* h = buildHeap(e,size);
+	hb_Heap*h = hb_build(e,size);
 
 	for(i=0;i<=h->lastElement;i++){
 		printf("%d ",h->elements[i]);
 	}
+	printf("\n");
 }
 
 void testInsert(){
-	BinaryHeap* h =  createHeap(15);
-	insert(h,1);
-	insert(h,2);
-	insert(h,3);
-	insert(h,4);
-	insert(h,5);
-	insert(h,6);
+	hb_Heap*h =  hb_create(15);
+	hb_insert(h,1);
+	hb_insert(h,2);
+	hb_insert(h,3);
+	hb_insert(h,4);
+	hb_insert(h,5);
+	hb_insert(h,6);
 
 	int i;
-	for(i=0; i< size_heap(h); i++){
+	for(i=0; i< hb_size(h); i++){
 		printf("%d ", h->elements[i]);
 	}
 
-	printf(" \n%d \n", deleteMax(h));
-	printf(" \n%d \n", deleteMax(h));
+	printf(" \n%d \n", hb_deleteMax(h));
+	printf(" \n%d \n", hb_deleteMax(h));
 	for(i=0; i<= h->lastElement; i++){
 		printf("%d ", h->elements[i]);
 	}
 
 }
 
-BinaryHeap* createHeap(int maxSize){
-	BinaryHeap* h= (BinaryHeap*)malloc(sizeof(BinaryHeap));
+hb_Heap*hb_create(int maxSize){
+	hb_Heap*h= (hb_Heap*)malloc(sizeof(hb_Heap));
 	h->elements = (int*)malloc(sizeof(int)*(maxSize));
 	h->maxSize = maxSize;
 	h->lastElement = -1;
 	return h;
 }
 
-void heapify(BinaryHeap* h, int i){
+void hb_heapify(hb_Heap*h, int i){
 	if(i>=0){
 		int max;
-		int izq = leftChild(i);
-		int der = rightChild(i);
+		int izq = hb_leftChild(i);
+		int der = hb_rightChild(i);
 
 		if(izq <= h->lastElement && h->elements[izq]>h->elements[i] ){
 			max = izq;
@@ -83,8 +85,8 @@ void heapify(BinaryHeap* h, int i){
 		}
 
 		if(max != i){
-			swap(&(h->elements[i]), &(h->elements[max]));
-			heapify(h, max);
+			hb_swap(&(h->elements[i]), &(h->elements[max]));
+			hb_heapify(h, max);
 		}
 
 	}
@@ -94,28 +96,28 @@ void heapify(BinaryHeap* h, int i){
     }
 }
 
-BinaryHeap* buildHeap(int* elements, int size){
-	BinaryHeap* h = createHeap(size);
+hb_Heap*hb_build(int* elements, int size){
+	hb_Heap*h = hb_create(size);
 	h->elements = elements;
 	h->lastElement = size-1;
 	h->maxSize = size;
 
 	int i;
 	for(i = h->lastElement/2;i >= 0; i-- ){
-		heapify(h,i);
+		hb_heapify(h,i);
 	}
 	return h;
 }
 
-void insert(BinaryHeap* h, int element){
+void hb_insert(hb_Heap*h, int element){
 	if(h->lastElement < h->maxSize-1){
 		h->lastElement++;
 		h->elements[h->lastElement] = element;
 		int i = h->lastElement;
 
-		while(i > 0 && h->elements[parent(i)] < h->elements[i]){
-			swap(&(h->elements[parent(i)]),&(h->elements[i]));
-			i = parent(i);
+		while(i > 0 && h->elements[hb_parent(i)] < h->elements[i]){
+			hb_swap(&(h->elements[hb_parent(i)]),&(h->elements[i]));
+			i = hb_parent(i);
 		}
 	}
 	else{
@@ -124,13 +126,13 @@ void insert(BinaryHeap* h, int element){
 	}
 }
 
-int deleteMax(BinaryHeap* h){
+int hb_deleteMax(hb_Heap*h){
 	if(h->lastElement >= 0){
 		int result = h->elements[0];
-		swap(&(h->elements[0]),&(h->elements[h->lastElement]));
+		hb_swap(&(h->elements[0]),&(h->elements[h->lastElement]));
 		h->lastElement--;
 		if(h->lastElement > 0){
-			heapify(h,0);
+			hb_heapify(h,0);
 		}
 		return result;
 	}
@@ -140,7 +142,7 @@ int deleteMax(BinaryHeap* h){
     }
 }
 
-int searchMax(BinaryHeap* h){
+int hb_searchMax(hb_Heap*h){
 	if(h->lastElement >= 0){
 		return h->elements[0];
 	}
@@ -150,26 +152,27 @@ int searchMax(BinaryHeap* h){
     }
 }
 
-int size_heap(BinaryHeap* h){
+int hb_size(hb_Heap*h){
 	return h->lastElement + 1;
 }
+
 /**
- * Intercambia los valores de los enteros a y b
+ * Swap two integer values
  */
-void swap(int* a, int* b){
+void hb_swap(int* a, int* b){
 	int tmp=*a;
 	*a=*b;
 	*b=tmp;
 }
 
-int leftChild(int nodeIndex){
+int hb_leftChild(int nodeIndex){
 	return 2*nodeIndex+1;
 }
 
-int rightChild(int nodeIndex){
+int hb_rightChild(int nodeIndex){
 	return 2*nodeIndex+2;
 }
 
-int parent(int nodeIndex){
+int hb_parent(int nodeIndex){
 	return (nodeIndex - 1)/2;
 }

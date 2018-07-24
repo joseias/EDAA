@@ -1,48 +1,53 @@
 /********************************************************************************
 * 																				*
-* ADT Set , implementacion MUY ineficiente utilizando un arreglo y elementos 	*
-* desde la posicion 0. Solo para ilustrar el concepto de TDA		 			*
+* ADT Set, very inefficient  implementation using arrays. Only to illustrate	*
+* the ADT definition															*
 * 																				*
 ********************************************************************************/
+
 #include "ADT_Set_Array.h"
 
 void testSet() {
-	Set* a = setCreate();
-	setAdd(a, 1);
-	setAdd(a, 2);
-	setAdd(a, 3);
-	setAdd(a, 4);
-	
-	setPrint(a);
+	seta_Set* a = seta_create();
+	seta_add(a, 1);
+	seta_add(a, 2);
+	seta_add(a, 3);
+	seta_add(a, 4);
 
-	Set* b = setCreate();
-	setAdd(b, 3);
-	setAdd(b, 4);
-	setAdd(b, 5);
-	setAdd(b, 6);
-	setAdd(b, 7);
+	printf("Set A -> ");
+	seta_print(a);
 
-	setPrint(b);
+	seta_Set* b = seta_create();
+	seta_add(b, 3);
+	seta_add(b, 4);
+	seta_add(b, 5);
+	seta_add(b, 6);
+	seta_add(b, 7);
 
-	Set* in = setIntersection(a,b);
-	setPrint(in);
+	printf("Set B -> ");
+	seta_print(b);
 
-	Set* un = setUnion(a, b);
-	setPrint(un);
+	seta_Set* in = seta_intersection(a, b);
+	printf("A interception B -> ");
+	seta_print(in);
+
+	seta_Set* un = seta_union(a, b);
+	printf("A union B -> ");
+	seta_print(un);
 }
 
 
 
-Set* setCreate() {
-	Set* s = (Set*)calloc(1,sizeof(Set));
+seta_Set* seta_create() {
+	seta_Set* s = (seta_Set*)calloc(1, sizeof(seta_Set));
 	s->resizeFactor = 2;
 	s->maxSize = s->resizeFactor;
 	s->size = 0;
-	s->elements = (int*)calloc(s->maxSize,sizeof(int));
+	s->elements = (int*)calloc(s->maxSize, sizeof(int));
 	return s;
 }
 
-bool setContains(Set* s, int element) {
+bool seta_contains(seta_Set* s, int element) {
 	int i;
 	for (i = 0; i<s->size; i++) {
 		if (s->elements[i] == element) {
@@ -52,12 +57,12 @@ bool setContains(Set* s, int element) {
 	return false;
 }
 
-void setAdd(Set* s, int element) {
+void seta_add(seta_Set* s, int element) {
 
-	if (!setContains(s, element)) {
+	if (!seta_contains(s, element)) {
 		if (s->size >= s->maxSize) {
 			s->maxSize = s->maxSize + s->resizeFactor;
-			int * resizedElements = (int*) calloc(s->maxSize, sizeof(int));
+			int * resizedElements = (int*)calloc(s->maxSize, sizeof(int));
 			memcpy(resizedElements, s->elements, sizeof(int) * s->size);
 			free(s->elements);
 			s->elements = resizedElements;
@@ -78,8 +83,8 @@ void setAdd(Set* s, int element) {
 	}
 }
 
-void setRemove(Set* s, int element) {
-	int i=0;
+void seta_remove(seta_Set* s, int element) {
+	int i = 0;
 
 	/*Search the ocurrence of the element...*/
 	bool found = false;
@@ -93,45 +98,45 @@ void setRemove(Set* s, int element) {
 	}
 
 	if (found) {
-		for (/*i from while loop*/; i < s->size-1; i++) {
+		for (/*i from while loop*/; i < s->size - 1; i++) {
 			s->elements[i] = s->elements[i + 1];
 		}
 		s->size--;
 	}
 }
 
-Set* setIntersection(Set* a, Set* b) {
+seta_Set* seta_intersection(seta_Set* a, seta_Set* b) {
 
-	Set* result = setCreate();
+	seta_Set* result = seta_create();
 	int i;
 	for (i = 0; i<a->size; i++) {
 		int element = a->elements[i];
 
-		if (setContains(b, element)) {
-			setAdd(result, element);
+		if (seta_contains(b, element)) {
+			seta_add(result, element);
 		}
 	}
 	return result;
 }
 
-Set* setUnion(Set* a, Set* b) {
-	Set* result = setCreate();
+seta_Set* seta_union(seta_Set* a, seta_Set* b) {
+	seta_Set* result = seta_create();
 	int i;
 	for (i = 0; i<a->size; i++) {
 		int element = a->elements[i];
-		setAdd(result, element);
+		seta_add(result, element);
 	}
 
 	for (i = 0; i<b->size; i++) {
 		int element = b->elements[i];
-		if (!setContains(result, element)) {
-			setAdd(result, element);
+		if (!seta_contains(result, element)) {
+			seta_add(result, element);
 		}
 	}
 	return result;
 }
 
-void setPrint(Set* s) {
+void seta_print(seta_Set* s) {
 	int i;
 	for (i = 0; i<s->size; i++) {
 		printf("%d ", s->elements[i]);

@@ -1,218 +1,238 @@
 /********************************************************************************
 * 																				*
-* ADT List, implementada como Lista Doblemente Enlazada 						*
+* ADT List, implemented as double linked list									*
 * 																				*
 ********************************************************************************/
 
 #include "ADT_List_DoubleLinked.h"
 
-void testLinkedList(){
+void ll_test() {
 	int i, element, index;
-	List* list=createList();
-	add(list, 1);
-	add(list, 3);
-	add(list, 5);
-	add(list, 3);
-	add(list, 7);
-	add(list, 1);
+	ll_List* list = ll_create();
+	ll_add(list, 1);
+	ll_add(list, 3);
+	ll_add(list, 5);
+	ll_add(list, 3);
+	ll_add(list, 7);
+	ll_add(list, 1);
 
 
-	deleteDup(list);
+	ll_deleteDup(list);
 
 
-	for(i=0;i<sizeList(list);i++){
-		printf("Elemento en posicion %d es : %d \n", i, get(list, i));
+	for (i = 0; i<ll_size(list); i++) {
+		printf("Element at %d is : %d \n", i, ll_get(list, i));
 	}
 
-	//printf("\n");
-	//printf("IndexOf %d -> %d \n", 3, indexOf(list, 3));
-	//printf("LastIndexOf %d -> %d \n", 3, lastIndexOf(list, 3));
+	printf("\n");
+	printf("IndexOf %d -> %d \n", 3, ll_indexOf(list, 3));
+	printf("LastIndexOf %d -> %d \n", 3, ll_lastIndexOf(list, 3));
 
-	//element=7;
-	//index=indexOf(list, element);
-	//printf("Indice de %d es: %d \n", element, index);
+	element = 7;
+	index = ll_indexOf(list, element);
+	printf("Indexof %d is: %d \n", element, index);
 
-	//removeAt(list, index);
+	printf("\nDeleting element at %d...\n", index);
+	ll_removeAt(list, index);
 
 
-	//printf("\n");
-	//for(i=0;i<sizeList(list);i++){
-	//	element=get(list, i);
-	//	printf("Elemento en posicion %d es : %d \n", i, element);
-	//}
+	printf("\n");
+	for(i=0;i<ll_size(list);i++){
+		element=ll_get(list, i);
+		printf("Element at %d is : %d \n", i, element);
+	}
 
-	//clear(list);
-	//add(list,2);
-	//add(list,4);
-	//add(list,6);
-	//add(list,8);
+	ll_clear(list);
 
-	//printf("\n");
-	//for(i=0;i<sizeList(list);i++){
-	//	element=get(list, i);
-	//	printf("Elemento en posicion %d es : %d \n", i, element);
-	//}
+	ll_add(list,2);
+	ll_add(list,4);
+	ll_add(list,6);
+	ll_add(list,8);
 
-	//List* rev = reverseRec(list);
-	//printf("\n");
-	//for (i = 0; i<sizeList(rev); i++) {
-	//	printf("Elemento en posicion %d es : %d \n", i, get(rev, i));
-	//}
+	printf("\n");
+	for(i=0;i<ll_size(list);i++){
+		element=ll_get(list, i);
+		printf("Element at %d is : %d \n", i, element);
+	}
+
+	ll_List* rev = ll_reverseRec(list);
+	printf("\n");
+	for (i = 0; i<ll_size(rev); i++) {
+		printf("Element at %d is : %d \n", i, ll_get(rev, i));
+	}
 }
-List* createList(){
-	List* list=(List*)malloc(sizeof(List));
-	list->size=0;
-	list->head=NULL;
-	list->tail=NULL;
+
+ll_List* ll_create() {
+	ll_List* list = (ll_List*)malloc(sizeof(ll_List));
+	list->size = 0;
+	list->head = NULL;
+	list->tail = NULL;
 	return list;
 }
-int sizeList(List* list){
+
+int ll_size(ll_List* list) {
 	return list->size;
 }
-void add(List* list, int element){
-	add_at(list, element, list->size);
+
+void ll_add(ll_List* list, int element) {
+	ll_addAt(list, element, list->size);
 }
-void add_at(List* list, int element, unsigned int pos){
-	Node* nn;
-	Node* cn;
-	Node* tmpl;
 
-	if(pos>=0 && pos <= list->size){
-		nn=createNode(element, NULL, NULL);
+void ll_addAt(ll_List* list, int element, unsigned int pos) {
+	ll_Node* nn;
+	ll_Node* cn;
+	ll_Node* tmpl;
 
-		if(list->size == 0){				/*Lista vacía*/
-			list->head=nn;
-			list->tail=nn;
+	if (pos >= 0 && pos <= list->size) {
+		nn = ll_createNode(element, NULL, NULL);
+
+		if (list->size == 0) {					/* The list is empty*/
+			list->head = nn;
+			list->tail = nn;
 		}
-		else{								/*Lista no vacia*/
-			if(pos==list->size){ 			/* Si pos es el final de la lista*/
-				tmpl=list->tail;
-				tmpl->next=nn;
-				nn->prev=tmpl;
-				list->tail=nn;
+		else {									/* The list is not empty */
+			if (pos == list->size) { 			/* If pos points to the list tail */
+				tmpl = list->tail;
+				tmpl->next = nn;
+				nn->prev = tmpl;
+				list->tail = nn;
 			}
-			else{
-				cn=getNodeAt(list,pos);		/*En este punto pos es una posicion válida de la lista*/
+			else {
+				cn = ll_getNodeAt(list, pos);	/* At this point, pos is a valid position */
 
-				if(pos==0){ 				/*Si pos es el comienzo de la lista*/
-					cn->prev=nn;
-					nn->next=cn;
-					list->head=cn;
+				if (pos == 0) { 				/* If pos points to the list head */
+					cn->prev = nn;
+					nn->next = cn;
+					list->head = cn;
 				}
-				else{ 						/*Se añade en una posicion intermedia*/
-					(cn->prev)->next=nn;
-					nn->prev=cn->prev;
-					cn->prev=nn;
-					nn->next=cn;
+				else { 							/* Adds to intermediate position */
+					(cn->prev)->next = nn;
+					nn->prev = cn->prev;
+					cn->prev = nn;
+					nn->next = cn;
 				}
 			}
 		}
 		list->size++;
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 
 }
-int get(List* list, unsigned int pos){
-	Node* n=getNodeAt(list, pos);
+
+int ll_get(ll_List* list, unsigned int pos) {
+	ll_Node* n = ll_getNodeAt(list, pos);
 	return n->value;
 }
-void removeAt(List* list, unsigned int pos){
-	Node* cn;
-	Node* cnn;
-	Node* cnp;
 
-	if(pos>=0 && pos < list->size){
-		cn=getNodeAt(list, pos);
+void ll_removeAt(ll_List* list, unsigned int pos) {
+	ll_Node* cn;
+	ll_Node* cnn;
+	ll_Node* cnp;
 
-		cnp=cn->prev;
-		cnn=cn->next;
+	if (pos >= 0 && pos < list->size) {
+		cn = ll_getNodeAt(list, pos);
+
+		cnp = cn->prev;
+		cnn = cn->next;
 
 
-		if(cnp == NULL){ /*cn = head (es el que tiene ->prev = NULL)*/
-			list->head=cnn;
+		if (cnp == NULL) {			/*cn = head (the one with ->prev = NULL)*/
+			list->head = cnn;
 		}
-		else{
-			cnp->next=cnn;
+		else {
+			cnp->next = cnn;
 		}
 
-		if(cnn == NULL){ /*cn = trail (es el que tiene ->next = NULL)*/
-			list->tail=cnp;
+		if (cnn == NULL) {			/*cn = trail (the one with ->next = NULL)*/
+			list->tail = cnp;
 		}
-		else{
-			cnn->prev=cnp;
+		else {
+			cnn->prev = cnp;
 		}
 		list->size--;
 		free(cn);
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 }
-int indexOf(List* list, int element){
-	int index=0;
-	Node* tmp=list->head;
 
-	while(tmp != NULL){
-		if(tmp->value == element){
+int ll_indexOf(ll_List* list, int element) {
+	int index = 0;
+	ll_Node* tmp = list->head;
+
+	while (tmp != NULL) {
+		if (tmp->value == element) {
 			return index;
 		}
-		tmp=tmp->next;
+		tmp = tmp->next;
 		index++;
 	}
 	return -1;
 }
 
-bool contains(List* list, int element){
-	return indexOf(list, element) != -1;
+bool ll_contains(ll_List* list, int element) {
+	return ll_indexOf(list, element) != -1;
 }
-void clear(List* list){
-	while(list->size>0){
-		removeAt(list, list->size-1);
+
+void ll_clear(ll_List* list) {
+	while (list->size>0) {
+		ll_removeAt(list, list->size - 1);
 	}
 }
-int set(List *list, int element, unsigned int pos){
-	Node* n=getNodeAt(list, pos);
-	int oldValue=n->value;
-	n->value=element;
+
+int ll_set(ll_List *list, int element, unsigned int pos) {
+	ll_Node* n = ll_getNodeAt(list, pos);
+	int oldValue = n->value;
+	n->value = element;
 	return oldValue;
 }
 
-Node* createNode(int element, Node* next, Node* prev){
-	Node* nn=(Node*) malloc(sizeof(Node));
-	nn->value=element;
-	nn->next=next;
-	nn->prev=prev;
+
+/* ADT List, auxiliary functions not in the specification... */
+
+ll_Node* ll_createNode(int element, ll_Node* next, ll_Node* prev) {
+	ll_Node* nn = (ll_Node*)malloc(sizeof(ll_Node));
+	nn->value = element;
+	nn->next = next;
+	nn->prev = prev;
 
 	return nn;
 }
-Node* getNodeAt(List* list, unsigned int pos){
-	Node* tmp;
-	int i;
-	if(pos>=0 && pos < list->size){
-		tmp=list->head;
 
-		for(i=1;i<=pos;i++){
-			tmp=tmp->next;
+ll_Node* ll_getNodeAt(ll_List* list, unsigned int pos) {
+	ll_Node* tmp;
+	int i;
+	if (pos >= 0 && pos < list->size) {
+		tmp = list->head;
+
+		for (i = 1; i <= pos; i++) {
+			tmp = tmp->next;
 		}
 
 		return tmp;
 	}
-	else{
+	else {
 		fprintf(stderr, "Invalid list index %d\n", pos);
 		exit(EXIT_FAILURE);
 	}
 }
 
 
-int lastIndexOf(List* list, int element) {
+/********************************************************************************
+* 																				*
+* ADT List, extra funtions...													*
+* 																				*
+********************************************************************************/
+int ll_lastIndexOf(ll_List* list, int element) {
 
 	int index;
-	for (index = sizeList(list) - 1; index >= 0; index--) {
-		if (get(list, index) == element) {
+	for (index = ll_size(list) - 1; index >= 0; index--) {
+		if (ll_get(list, index) == element) {
 			return index;
 		}
 	}
@@ -221,17 +241,17 @@ int lastIndexOf(List* list, int element) {
 }
 
 /*Recursive list reversal*/
-List* reverseRec(List* list) {
-	List* rev;
+ll_List* ll_reverseRec(ll_List* list) {
+	ll_List* rev;
 	int e;
-	if (sizeList(list) == 0) {
-		return createList();
+	if (ll_size(list) == 0) {
+		return ll_create();
 	}
 	else {
-		e = get(list,0);
-		removeAt(list,0);
-		rev = reverseRec(list);
-		add(rev,e);
+		e = ll_get(list, 0);
+		ll_removeAt(list, 0);
+		rev = ll_reverseRec(list);
+		ll_add(rev, e);
 		return rev;
 	}
 }
@@ -239,12 +259,12 @@ List* reverseRec(List* list) {
 
 /*Removing duplicates just with TDA List operations, without sort. Only one instance for element
 is retained...*/
-void deleteDup(List* list) {
+void ll_deleteDup(ll_List* list) {
 	int i, j;
-	for (i = 0; i < sizeList(list)-1; i++ ) {
-		for (j = sizeList(list)-1; j > i; j--) {
-			if (get(list, i) == get(list, j)) {
-				removeAt(list, j);
+	for (i = 0; i < ll_size(list) - 1; i++) {
+		for (j = ll_size(list) - 1; j > i; j--) {
+			if (ll_get(list, i) == ll_get(list, j)) {
+				ll_removeAt(list, j);
 			}
 		}
 	}
