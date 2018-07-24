@@ -22,7 +22,34 @@ HashTable* createHashTable(){
 	return ht;
 }
 
+bool containsKey(HashTable* ht, int key) {
+	int index = hashDiv(key, ht->tableSize);
+	Entry* entry = ht->table[index];
 
+	while (entry != NULL) {
+		if (entry->key == key) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+int get(HashTable* ht, int key) {
+	int index = hashDiv(key, ht->tableSize);
+	Entry* entry = ht->table[index];
+
+	while (entry != NULL) {
+		if (entry->key == key) {
+			return entry->value;
+		}
+		else {
+			entry = entry->next;
+		}
+	}
+
+	return NULL;
+}
 
 void put(HashTable* ht, int key, int value) {
 	int index = hashDiv(key, ht->tableSize);
@@ -39,7 +66,6 @@ void put(HashTable* ht, int key, int value) {
 		entry = entry->next;
 	}
 	
-
 	Entry* en = (Entry*)malloc(sizeof(Entry));
 	en->key = key;
 	en->value = value;
@@ -58,8 +84,8 @@ void remove(HashTable* ht, int key) {
 	Entry* entry = ht->table[index];
 
 	while (entry != NULL) {
-
 		if (entry->key == key) {
+			/* Updating pointers to remove the entry...*/
 			if (entry->next != NULL) {
 				entry->next->prev = entry->prev;
 			}
@@ -67,10 +93,14 @@ void remove(HashTable* ht, int key) {
 			if (entry->prev != NULL) {
 				entry->prev->next = entry->next;
 			}
-		}
-		entry = entry->next;
-	}
 
+			free(entry);
+			entry = NULL;
+		}
+		else {
+			entry = entry->next;
+		}
+	}
 
 	ht->size--;
 }

@@ -27,7 +27,7 @@ typedef struct hashTable{
 
 
 HashTable* createHashTable();
-
+bool containsKey(HashTable* ht, int key);
 int get(HashTable* ht, int key);
 void put(HashTable* ht, int key, int value);
 void remove(HashTable* ht, int key);
