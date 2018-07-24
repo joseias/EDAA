@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT_List_DoubleLinked.h"
+#include "ADT_HashTable.h"
 
 int main(void)
 {
@@ -19,7 +19,7 @@ int main(void)
 //	testArrayMin();
 //	testInsertionSort();
 //	testArraySum();
-	testLinkedList();
+//	testLinkedList();
 //	testStack();
 //	testBalancing();
 //	testPosEval();

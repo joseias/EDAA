@@ -15,36 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\generic\Main.c">
+    <ClCompile Include="src\integer\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\generic\Comparators.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\generic\ADT_List_DoubleLinked.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\generic\Destructors.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\generic\ADT_HashTable.c">
+    <ClCompile Include="src\integer\ADT_HashTable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\generic\ADT_List_DoubleLinked.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\generic\Comparators.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\generic\Misc_Data_Types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\generic\Destructors.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\generic\ADT_HashTable.h">
+    <ClInclude Include="src\integer\ADT_HashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -136,6 +136,7 @@ void* get(List* list, unsigned int pos) {
 	Node* n = getNodeAt(list, pos);
 	return n->data;
 }
+
 void remove_at(List* list, unsigned int pos) {
 	Node* cn;
 	Node* cnn;

@@ -19,18 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\generic\ADT_HashTable.c" />
-    <ClCompile Include="src\generic\ADT_List_DoubleLinked.c" />
-    <ClCompile Include="src\generic\Comparators.c" />
-    <ClCompile Include="src\generic\Destructors.c" />
-    <ClCompile Include="src\generic\Main.c" />
+    <ClCompile Include="src\integer\ADT_HashTable.c" />
+    <ClCompile Include="src\integer\Main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\generic\ADT_HashTable.h" />
-    <ClInclude Include="src\generic\ADT_List_DoubleLinked.h" />
-    <ClInclude Include="src\generic\Comparators.h" />
-    <ClInclude Include="src\generic\Destructors.h" />
-    <ClInclude Include="src\generic\Misc_Data_Types.h" />
+    <ClInclude Include="src\integer\ADT_HashTable.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
