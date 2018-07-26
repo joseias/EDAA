@@ -23,9 +23,9 @@ void testTreeTraversals(){
 	printf("Tree height -> %d \n", height(n17));
 
 
-	List* pre = createList();
-	List* in = createList();
-	List* pos = createList();
+	ll_List* pre = ll_create();
+	ll_List* in = ll_create();
+	ll_List* pos = ll_create();
 
 	preOrder(n17, pre);
 	inOrder(n17, in);
@@ -33,20 +33,20 @@ void testTreeTraversals(){
 
 	int i;
 	printf("preOrder -> ");
-	for(i=0;i<sizeList(pre);i++){
-		printf("%d ", get(pre,i));
+	for(i=0;i<ll_size(pre);i++){
+		printf("%d ", ll_get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<sizeList(in);i++){
-		printf("%d ", get(in,i));
+	for(i=0;i<ll_size(in);i++){
+		printf("%d ", ll_get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<sizeList(pos);i++){
-		printf("%d ", get(pos,i));
+	for(i=0;i<ll_size(pos);i++){
+		printf("%d ", ll_get(pos,i));
 	}
 	printf("\n");
 
@@ -54,7 +54,7 @@ void testTreeTraversals(){
 
 void testTreeInsertion(){
 
-	BinaryTree* t = createTree();
+	BinaryTree* t = createTree(NULL, NULL, NULL);
 	bstInsert(t,17);
 	bstInsert(t,8);
 	bstInsert(t,4);
@@ -66,9 +66,9 @@ void testTreeInsertion(){
 	bstInsert(t,20);
 	bstInsert(t,32);
 
-	List* pre = createList();
-	List* in = createList();
-	List* pos = createList();
+	ll_List* pre = ll_create();
+	ll_List* in = ll_create();
+	ll_List* pos = ll_create();
 
 	preOrder(t, pre);
 	inOrder(t, in);
@@ -76,20 +76,20 @@ void testTreeInsertion(){
 
 	int i;
 	printf("preOrder -> ");
-	for(i=0;i<sizeList(pre);i++){
-		printf("%d ", get(pre,i));
+	for(i=0;i<ll_size(pre);i++){
+		printf("%d ", ll_get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<sizeList(in);i++){
-		printf("%d ", get(in,i));
+	for(i=0;i<ll_size(in);i++){
+		printf("%d ", ll_get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<sizeList(pos);i++){
-		printf("%d ", get(pos,i));
+	for(i=0;i<ll_size(pos);i++){
+		printf("%d ", ll_get(pos,i));
 	}
 	printf("\n");
 
@@ -107,29 +107,29 @@ void testTreeInsertion(){
 
 	bstDelete(t,17);
 
-	pre = createList();
-	in = createList();
-	pos = createList();
+	pre = ll_create();
+	in = ll_create();
+	pos = ll_create();
 
 	preOrder(t, pre);
 	inOrder(t, in);
 	posOrder(t,pos);
 
 	printf("preOrder -> ");
-	for(i=0;i<sizeList(pre);i++){
-		printf("%d ", get(pre,i));
+	for(i=0;i<ll_size(pre);i++){
+		printf("%d ", ll_get(pre,i));
 	}
 	printf("\n");
 
 	printf("inOrder -> ");
-	for(i=0;i<sizeList(in);i++){
-		printf("%d ", get(in,i));
+	for(i=0;i<ll_size(in);i++){
+		printf("%d ", ll_get(in,i));
 	}
 	printf("\n");
 
 	printf("posOrder -> ");
-	for(i=0;i<sizeList(pos);i++){
-		printf("%d ", get(pos,i));
+	for(i=0;i<ll_size(pos);i++){
+		printf("%d ", ll_get(pos,i));
 	}
 	printf("\n");
 
@@ -288,8 +288,8 @@ BinaryTree* bstFindMax(BinaryTree* t){
 }
 
 
-void preOrder(BinaryTree* t, List* elements){
-	add(elements, t->element);
+void preOrder(BinaryTree* t, ll_List* elements){
+	ll_add(elements, t->element);
 	if(t->left != NULL){
 		preOrder(t->left,elements);
 	}
@@ -297,19 +297,19 @@ void preOrder(BinaryTree* t, List* elements){
 		preOrder(t->right, elements);
 	}
 }
-void inOrder(BinaryTree* t, List* elements){
+void inOrder(BinaryTree* t, ll_List* elements){
 	if(t->left != NULL){
 		inOrder(t->left,elements);
 	}
 
-	add(elements, t->element);
+	ll_add(elements, t->element);
 
 	if(t->right != NULL){
 		inOrder(t->right,elements);
 	}
 }
 
-void posOrder(BinaryTree* t, List* elements){
+void posOrder(BinaryTree* t, ll_List* elements){
 
 	if(t->left != NULL){
 		posOrder(t->left,elements);
@@ -317,7 +317,7 @@ void posOrder(BinaryTree* t, List* elements){
 	if(t->right != NULL){
 		posOrder(t->right, elements);
 	}
-	add(elements, t->element);
+	ll_add(elements, t->element);
 }
 
 int height(BinaryTree* t){

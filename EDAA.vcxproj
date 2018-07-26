@@ -19,15 +19,41 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\integer\ADT_BinaryHeap.c" />
+    <ClCompile Include="src\integer\ADT_BinaryTreeRecursive.c" />
+    <ClCompile Include="src\integer\ADT_HashTable.c" />
+    <ClCompile Include="src\integer\ADT_List_DoubleLinked.c" />
+    <ClCompile Include="src\integer\ADT_Queue_CircularArray.c" />
     <ClCompile Include="src\integer\ADT_Queue_Linked.c" />
+    <ClCompile Include="src\integer\ADT_Queue_List.c" />
+    <ClCompile Include="src\integer\ADT_Queue_TwoStacks.c" />
+    <ClCompile Include="src\integer\ADT_Set_Array.c" />
+    <ClCompile Include="src\integer\ADT_Stack_Array.c" />
     <ClCompile Include="src\integer\ADT_Stack_Linked.c" />
+    <ClCompile Include="src\integer\ADT_Stack_List.c" />
+    <ClCompile Include="src\integer\ADT_Stack_TwoQueues.c" />
     <ClCompile Include="src\integer\Main.c" />
     <ClCompile Include="src\integer\ProblemSolutions.c" />
+    <ClCompile Include="src\integer\Recursion.c" />
+    <ClCompile Include="src\integer\SearchSort.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\integer\ADT_BinaryHeap.h" />
+    <ClInclude Include="src\integer\ADT_BinaryTreeRecursive.h" />
+    <ClInclude Include="src\integer\ADT_HashTable.h" />
+    <ClInclude Include="src\integer\ADT_List_DoubleLinked.h" />
+    <ClInclude Include="src\integer\ADT_Queue_CircularArray.h" />
     <ClInclude Include="src\integer\ADT_Queue_Linked.h" />
+    <ClInclude Include="src\integer\ADT_Queue_List.h" />
+    <ClInclude Include="src\integer\ADT_Queue_TwoStacks.h" />
+    <ClInclude Include="src\integer\ADT_Set_Array.h" />
+    <ClInclude Include="src\integer\ADT_Stack_Array.h" />
     <ClInclude Include="src\integer\ADT_Stack_Linked.h" />
+    <ClInclude Include="src\integer\ADT_Stack_List.h" />
+    <ClInclude Include="src\integer\ADT_Stack_TwoQueues.h" />
     <ClInclude Include="src\integer\ProblemSolutions.h" />
+    <ClInclude Include="src\integer\Recursion.h" />
+    <ClInclude Include="src\integer\SearchSort.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

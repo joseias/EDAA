@@ -30,9 +30,9 @@ BinaryTree* bstSuccessor(BinaryTree* t, int element);
 BinaryTree* bstPredecessor(BinaryTree* t, int element);
 
 
-void inOrder(BinaryTree* t, List* elements);
-void preOrder(BinaryTree* t, List* elements);
-void posOrder(BinaryTree* t, List* elements);
+void inOrder(BinaryTree* t, ll_List* elements);
+void preOrder(BinaryTree* t, ll_List* elements);
+void posOrder(BinaryTree* t, ll_List* elements);
 int height(BinaryTree* t);
 int size_tree(BinaryTree* t);
 #endif /* BINARYTREERECURSIVE_H_ */

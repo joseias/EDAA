@@ -18,24 +18,102 @@
     <ClCompile Include="src\integer\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\integer\ProblemSolutions.c">
+    <ClCompile Include="src\integer\ADT_BinaryHeap.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_BinaryTreeRecursive.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_HashTable.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_List_DoubleLinked.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Queue_CircularArray.c">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="src\integer\ADT_Queue_Linked.c">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\integer\ADT_Queue_List.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Queue_TwoStacks.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Set_Array.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Stack_Array.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\integer\ADT_Stack_Linked.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Stack_List.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ADT_Stack_TwoQueues.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\ProblemSolutions.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\Recursion.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\integer\SearchSort.c">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\integer\ProblemSolutions.h">
+    <ClInclude Include="src\integer\ADT_BinaryHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_BinaryTreeRecursive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_HashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_List_DoubleLinked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Queue_CircularArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\integer\ADT_Queue_Linked.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\integer\ADT_Queue_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Queue_TwoStacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Set_Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Stack_Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\integer\ADT_Stack_Linked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Stack_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_Stack_TwoQueues.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ProblemSolutions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\Recursion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\SearchSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
