@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include "ADT_Set_Array.h"
 
 typedef struct entry{
 	int key;
@@ -33,5 +34,9 @@ void ht_put(HashTable* ht, int key, int value);
 void ht_remove(HashTable* ht, int key);
 
 int hashDiv(int key, int tableSize);
+
+
+void ht_testKeySet();
+seta_Set* ht_keySet(HashTable* ht);
 
 #endif /* ADT_HASHTABLE_H_ */

@@ -55,6 +55,7 @@ HashTable* ht_create(){
 	return ht;
 }
 
+
 bool ht_containsKey(HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
 	Entry* entry = ht->table[index];
@@ -166,4 +167,33 @@ void ht_remove(HashTable* ht, int key) {
 
 int hashDiv(int key, int tableSize) {
 	return key % tableSize;
+}
+
+void ht_testKeySet() {
+	HashTable* ht = ht_create();
+	ht_put(ht, 2002, 2);
+	ht_put(ht, 2012, 12);
+	ht_put(ht, 2014, 14);
+	ht_put(ht, 2015, 15);
+
+	seta_Set* keys = ht_keySet(ht);
+	seta_print(keys);
+}
+
+
+seta_Set* ht_keySet(HashTable* ht) {
+	seta_Set* keys = seta_create();
+
+	int bucket;
+
+	for (bucket = 0; bucket < ht->tableSize; ++bucket) {
+		Entry* entry = ht->table[bucket];
+
+		while (entry != NULL) {
+			seta_add(keys, entry->key);
+			entry = entry->next;
+		}
+	}
+
+	return keys;
 }

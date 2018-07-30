@@ -20,13 +20,14 @@ int main(void)
 //	sll_test();						/* #include "ADT_Stack_List.h" */
 //	sq_test();						/* #include "ADT_Stack_TwoQueues.h" */
 
-	testTreeInsertion();			/* #include "ADT_BinaryTreeRecursive.h" */
+//	testTreeInsertion();			/* #include "ADT_BinaryTreeRecursive.h" */
 //	testTreeTraversals();			/* #include "ADT_BinaryTreeRecursive.h" */
 
 //	hb_testBuildHeap();				/* #include "ADT_BinaryHeap.h" */
 //	hb_testHeapify();				/* #include "ADT_BinaryHeap.h" */
 
 //	ht_test();						/* #include "ADT_HashTable.h" */
+	ht_testKeySet();				/* #include "ADT_HashTable.h" */
 
 //	testSearch();					/* #include "SearchSort.h" */
 //	testSelectionSort();			/* #include "SearchSort.h" */
