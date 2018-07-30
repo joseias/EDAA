@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT_BinaryTreeRecursive.h"
+#include "ADT_HashTable_GenericValue.h"
 
 int main(void)
 {
@@ -27,7 +27,8 @@ int main(void)
 //	hb_testHeapify();				/* #include "ADT_BinaryHeap.h" */
 
 //	ht_test();						/* #include "ADT_HashTable.h" */
-	ht_testKeySet();				/* #include "ADT_HashTable.h" */
+//	ht_testKeySet();				/* #include "ADT_HashTable.h" */
+	htig_test();						/* #include "ADT_HashTable_List.h" */
 
 //	testSearch();					/* #include "SearchSort.h" */
 //	testSelectionSort();			/* #include "SearchSort.h" */

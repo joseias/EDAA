@@ -22,6 +22,7 @@
     <ClCompile Include="src\integer\ADT_BinaryHeap.c" />
     <ClCompile Include="src\integer\ADT_BinaryTreeRecursive.c" />
     <ClCompile Include="src\integer\ADT_HashTable.c" />
+    <ClCompile Include="src\integer\ADT_HashTable_GenericValue.c" />
     <ClCompile Include="src\integer\ADT_List_DoubleLinked.c" />
     <ClCompile Include="src\integer\ADT_Queue_CircularArray.c" />
     <ClCompile Include="src\integer\ADT_Queue_Linked.c" />
@@ -41,6 +42,7 @@
     <ClInclude Include="src\integer\ADT_BinaryHeap.h" />
     <ClInclude Include="src\integer\ADT_BinaryTreeRecursive.h" />
     <ClInclude Include="src\integer\ADT_HashTable.h" />
+    <ClInclude Include="src\integer\ADT_HashTable_GenericValue.h" />
     <ClInclude Include="src\integer\ADT_List_DoubleLinked.h" />
     <ClInclude Include="src\integer\ADT_Queue_CircularArray.h" />
     <ClInclude Include="src\integer\ADT_Queue_Linked.h" />

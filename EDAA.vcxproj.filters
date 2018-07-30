@@ -66,6 +66,9 @@
     <ClCompile Include="src\integer\SearchSort.c">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\integer\ADT_HashTable_GenericValue.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\integer\ADT_BinaryHeap.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\integer\SearchSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\integer\ADT_HashTable_GenericValue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
