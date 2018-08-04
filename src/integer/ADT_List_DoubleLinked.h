@@ -42,7 +42,7 @@ int ll_set(ll_List *list, int element, unsigned int pos);
 
 ll_Node* ll_createNode(int element, ll_Node* next, ll_Node* prev);
 ll_Node* ll_getNodeAt(ll_List* list, int unsigned pos);
-
+void ll_print(ll_List* list);
 
 
 /********************************************************************************
@@ -60,3 +60,6 @@ ll_List* ll_reverseRec(ll_List* list);
 /*Removing duplicates just with TDA List operations*/
 void ll_deleteDup(ll_List* list);
 #endif /* ADT_LIST_DOUBLELINKED_H_ */
+
+void ll_testAlternate();
+ll_List* ll_alternate(ll_List* l1, ll_List* l2);

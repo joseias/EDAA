@@ -222,6 +222,15 @@ ll_Node* ll_getNodeAt(ll_List* list, unsigned int pos) {
 	}
 }
 
+void ll_print(ll_List* list) {
+	ll_Node* h = list->head;
+	
+	while (h!=NULL) {
+		printf("%d ", h->value);
+		h = h->next;
+	}
+	printf("\n");
+}
 
 /********************************************************************************
 * 																				*
@@ -268,4 +277,50 @@ void ll_deleteDup(ll_List* list) {
 			}
 		}
 	}
+}
+
+void ll_testAlternate() {
+	ll_List* l1 = ll_create();
+	ll_List* l2 = ll_create();
+
+	ll_add(l1, 1);
+	ll_add(l1, 3);
+	//ll_add(l1, 5); 
+	//ll_add(l1, 7);
+
+	ll_add(l2, 2);
+	ll_add(l2, 4);
+	ll_add(l2, 6);
+	ll_add(l2, 8);
+
+	ll_List* l3 = ll_alternate(l1, l2);
+	ll_print(l3);
+
+}
+
+/* Alternating elements from two lists*/
+ll_List* ll_alternate(ll_List* l1, ll_List* l2) {
+	ll_List* r = ll_create();
+
+	ll_Node* h1 = l1->head;
+	ll_Node* h2 = l2->head;
+
+	while (h1!=NULL && h2!=NULL) {
+		ll_add(r, h1->value);
+		ll_add(r, h2->value);
+		h1 = h1->next;
+		h2 = h2->next;
+	}
+
+	while (h1 != NULL) {
+		ll_add(r, h1->value);
+		h1 = h1->next;
+	}
+
+	while (h2 != NULL) {
+		ll_add(r, h2->value);
+		h2 = h2->next;
+	}
+
+	return r;
 }

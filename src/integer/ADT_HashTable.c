@@ -1,3 +1,5 @@
+
+
 /********************************************************************************
 *																				*
 * Simple ADT HasthTable with integers key and values. Collisions by chainning   *
@@ -7,7 +9,7 @@
 #include "ADT_HashTable.h"
 void ht_test() {
 
-	HashTable* ht = ht_create();
+	ht_HashTable* ht = ht_create();
 	ht_put(ht, 2002, 2);
 	ht_put(ht, 2012, 12);
 	ht_put(ht, 2014, 14);
@@ -39,13 +41,13 @@ void ht_test() {
 	}
 }
 
-HashTable* ht_create(){
+ht_HashTable* ht_create() {
 
-	HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
+	ht_HashTable* ht = (ht_HashTable*)malloc(sizeof(ht_HashTable));
 	ht->size = 0;
 	ht->tableSize = 13;
 
-	ht->table = (Entry**) malloc(sizeof(Entry*) * ht->tableSize);
+	ht->table = (ht_Entry**)malloc(sizeof(ht_Entry*) * ht->tableSize);
 
 	int i;
 	for (i = 0; i < ht->tableSize; i++) {
@@ -56,9 +58,9 @@ HashTable* ht_create(){
 }
 
 
-bool ht_containsKey(HashTable* ht, int key) {
+bool ht_containsKey(ht_HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
-	Entry* entry = ht->table[index];
+	ht_Entry* entry = ht->table[index];
 
 	while (entry != NULL) {
 		if (entry->key == key) {
@@ -72,9 +74,9 @@ bool ht_containsKey(HashTable* ht, int key) {
 	return false;
 }
 
-int ht_get(HashTable* ht, int key) {
+int ht_get(ht_HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
-	Entry* entry = ht->table[index];
+	ht_Entry* entry = ht->table[index];
 	bool found = false;
 
 	while (entry != NULL && !found) {
@@ -95,14 +97,14 @@ int ht_get(HashTable* ht, int key) {
 	}
 }
 
-void ht_put(HashTable* ht, int key, int value) {
+void ht_put(ht_HashTable* ht, int key, int value) {
 	int index = hashDiv(key, ht->tableSize);
-	Entry* entry = ht->table[index];
+	ht_Entry* entry = ht->table[index];
 	int oldValue;
 	bool found = false;
 
-	while (entry!= NULL && !found) {
-		/* Checks if the key is already in the hashtable*/
+	while (entry != NULL && !found) {
+		/* Checks if the key is already in the ht_HashTable*/
 		if (entry->key == key) {
 			oldValue = value;
 			entry->value = value;
@@ -113,7 +115,7 @@ void ht_put(HashTable* ht, int key, int value) {
 
 
 	if (!found) {
-		Entry* en = (Entry*)malloc(sizeof(Entry));
+		ht_Entry* en = (ht_Entry*)malloc(sizeof(ht_Entry));
 		en->key = key;
 		en->value = value;
 
@@ -128,14 +130,14 @@ void ht_put(HashTable* ht, int key, int value) {
 			ht->table[index]->prev = en;
 			ht->table[index] = en;
 		}
-		
+
 		ht->size++;
 	}
 }
 
-void ht_remove(HashTable* ht, int key) {
+void ht_remove(ht_HashTable* ht, int key) {
 	int index = hashDiv(key, ht->tableSize);
-	Entry* entry = ht->table[index];
+	ht_Entry* entry = ht->table[index];
 	bool found = false;
 
 	while (entry != NULL && !found) {
@@ -170,7 +172,7 @@ int hashDiv(int key, int tableSize) {
 }
 
 void ht_testKeySet() {
-	HashTable* ht = ht_create();
+	ht_HashTable* ht = ht_create();
 	ht_put(ht, 2002, 2);
 	ht_put(ht, 2012, 12);
 	ht_put(ht, 2014, 14);
@@ -181,13 +183,13 @@ void ht_testKeySet() {
 }
 
 
-seta_Set* ht_keySet(HashTable* ht) {
+seta_Set* ht_keySet(ht_HashTable* ht) {
 	seta_Set* keys = seta_create();
 
 	int bucket;
 
 	for (bucket = 0; bucket < ht->tableSize; ++bucket) {
-		Entry* entry = ht->table[bucket];
+		ht_Entry* entry = ht->table[bucket];
 
 		while (entry != NULL) {
 			seta_add(keys, entry->key);
@@ -196,4 +198,43 @@ seta_Set* ht_keySet(HashTable* ht) {
 	}
 
 	return keys;
+}
+
+
+void ht_testContainsValue(){
+
+	ht_HashTable* ht = ht_create();
+	ht_put(ht, 1, 2001);
+	ht_put(ht, 2, 2002);
+	ht_put(ht, 3, 2003);
+
+	int query = 2002;
+	if (ht_containsValue(ht, query)) {
+		printf("Value %d  found...\n ", query);
+	}
+	else {
+		printf("Value %d not found...\n ", query);
+	}
+}
+
+
+
+bool ht_containsValue(ht_HashTable* ht, int value) {
+	int bucket;
+	bool found = false;
+
+	for (bucket = 0; bucket < ht->tableSize; ++bucket) {
+		ht_Entry* entry = ht->table[bucket];
+
+		while (entry != NULL && !found) {
+			if (entry->value == value) {
+				found = true;
+			}
+			else {
+				entry = entry->next;
+			}
+		}
+	}
+
+	return found;
 }

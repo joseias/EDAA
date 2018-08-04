@@ -12,31 +12,33 @@
 #include <stdbool.h>
 #include "ADT_Set_Array.h"
 
-typedef struct entry{
+typedef struct ht_entry{
 	int key;
 	int value;
-	struct entry* prev;
-	struct entry* next;
-} Entry;
+	struct ht_entry* prev;
+	struct ht_entry* next;
+} ht_Entry;
 
 
-typedef struct hashTable{
+typedef struct ht_hashTable{
 	int size;
 	int tableSize;
-	Entry** table;
-}HashTable;
+	ht_Entry** table;
+}ht_HashTable;
 
 void ht_test();
-HashTable* ht_create();
-bool ht_containsKey(HashTable* ht, int key);
-int ht_get(HashTable* ht, int key);
-void ht_put(HashTable* ht, int key, int value);
-void ht_remove(HashTable* ht, int key);
+ht_HashTable* ht_create();
+bool ht_containsKey(ht_HashTable* ht, int key);
+int ht_get(ht_HashTable* ht, int key);
+void ht_put(ht_HashTable* ht, int key, int value);
+void ht_remove(ht_HashTable* ht, int key);
 
 int hashDiv(int key, int tableSize);
 
 
 void ht_testKeySet();
-seta_Set* ht_keySet(HashTable* ht);
+seta_Set* ht_keySet(ht_HashTable* ht);
 
+void ht_testContainsValue();
+bool ht_containsValue(ht_HashTable* ht, int value);
 #endif /* ADT_HASHTABLE_H_ */

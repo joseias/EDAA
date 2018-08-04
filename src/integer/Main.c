@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT_HashTable_GenericValue.h"
+#include "Headers.h"
 
 int main(void)
 {
@@ -28,7 +28,7 @@ int main(void)
 
 //	ht_test();						/* #include "ADT_HashTable.h" */
 //	ht_testKeySet();				/* #include "ADT_HashTable.h" */
-	htig_test();						/* #include "ADT_HashTable_List.h" */
+//	htig_test();					/* #include "ADT_HashTable_GenericValue.h" */
 
 //	testSearch();					/* #include "SearchSort.h" */
 //	testSelectionSort();			/* #include "SearchSort.h" */
@@ -52,7 +52,9 @@ int main(void)
 //	testReverseQueue();				/* #include "ProblemSolutions.h" */
 //	testSizeStackNoSize();			/* #include "ProblemSolutions.h" */
 //	testMultArray();				/* #include "ProblemSolutions.h" */
+//	testAlternate();				/* #include "ADT_List_DoubleLinked.h"	*/
 
+	ht_testContainsValue();			/* #include "ADT_HashTable.h" */
 	printf("\n");
 	system("pause");
 	return 0;
